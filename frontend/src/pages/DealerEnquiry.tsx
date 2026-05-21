@@ -9,15 +9,59 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import CampaignIcon from '@mui/icons-material/Campaign';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import GrassIcon from '@mui/icons-material/Grass';
-import { dealerBenefits } from '../data/constants';
-import { CONTACT_DETAILS } from '../data/constants';
+import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { dealerBenefits, CONTACT_DETAILS } from '../data/constants';
+import { VITE_EMAILJS_PUBLIC_KEY, VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID } from '../data/config';
+
+const PRODUCTS = ["Wheat Seeds", "Mustard Seeds", "Paddy Seeds", "Vegetable Seeds", "Hybrid Seeds", "Fodder Seeds", "Flower Seeds", "Other Seeds"];
 
 export default function DealerEnquiry() {
+
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+
+  const handleProductToggle = (product: string) => {
+    setSelectedProducts(prev =>
+      prev.includes(product) ? prev.filter(p => p !== product) : [...prev, product]
+    );
+  };
+
+  const sendEnquiry = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    // Inject selected products as a hidden field value before sending
+    const productsInput = formRef.current.querySelector<HTMLInputElement>('input[name="products_of_interest"]');
+    if (productsInput) productsInput.value = selectedProducts.join(', ') || 'None selected';
+
+    setIsSending(true);
+    emailjs.sendForm(
+      VITE_EMAILJS_SERVICE_ID,
+      VITE_EMAILJS_TEMPLATE_ID,
+      formRef.current,
+      VITE_EMAILJS_PUBLIC_KEY
+    ).then(
+      () => {
+        alert('Dealer enquiry submitted successfully! Our team will contact you shortly.');
+        formRef.current?.reset();
+        setSelectedProducts([]);
+        setIsSending(false);
+      },
+      (error) => {
+        alert('Failed to submit enquiry. Please try again.');
+        console.error(error);
+        setIsSending(false);
+      }
+    );
+  };
+
   return (
     <Box sx={{ pt: { xs: '70px', md: '125px' } }}>
       {/* HERO SECTION */}
-      <Box 
-        sx={{ 
+      <Box
+        sx={{
           height: { xs: '300px', md: '450px' },
           backgroundImage: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop")',
           backgroundSize: 'cover',
@@ -103,110 +147,127 @@ export default function DealerEnquiry() {
               <Card sx={{ borderRadius: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', border: '1px solid #f0f0f0', p: { xs: 2, md: 4 } }}>
                 <CardContent>
                   <Typography variant="h4" sx={{ fontWeight: 800, mb: 4 }}>Dealer Enquiry Form</Typography>
-                  
-                  <Grid container spacing={3}>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="Full Name *" placeholder="Enter your full name" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="Business / Shop Name *" placeholder="Enter your business name" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="Mobile Number *" placeholder="Enter your mobile number" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="Email Address" placeholder="Enter your email address" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <FormControl fullWidth>
-                        <InputLabel>State *</InputLabel>
-                        <Select label="State *">
-                          <MenuItem value="MP">Madhya Pradesh</MenuItem>
-                          <MenuItem value="UP">Uttar Pradesh</MenuItem>
-                          <MenuItem value="RJ">Rajasthan</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <FormControl fullWidth>
-                        <InputLabel>District *</InputLabel>
-                        <Select label="District *">
-                          <MenuItem value="Indore">Indore</MenuItem>
-                          <MenuItem value="Bhopal">Bhopal</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="City / Town *" placeholder="Enter your city or town" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="Pincode *" placeholder="Enter pincode" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12 }}>
-                      <TextField fullWidth multiline rows={3} label="Complete Address *" placeholder="Enter your complete address" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <FormControl fullWidth>
-                        <InputLabel>Business Type *</InputLabel>
-                        <Select label="Business Type *">
-                          <MenuItem value="Retailer">Retailer</MenuItem>
-                          <MenuItem value="Distributor">Distributor</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <FormControl fullWidth>
-                        <InputLabel>Experience in Seeds Business *</InputLabel>
-                        <Select label="Experience in Seeds Business *">
-                          <MenuItem value="0-2">0-2 Years</MenuItem>
-                          <MenuItem value="2-5">2-5 Years</MenuItem>
-                          <MenuItem value="5+">5+ Years</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    
-                    <Grid size={{ xs: 12 }}>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 1.5 }}>Products of Interest *</Typography>
-                      <FormGroup sx={{ display: 'flex', flexDirection: 'row' }}>
-                        {["Wheat Seeds", "Mustard Seeds", "Paddy Seeds", "Vegetable Seeds", "Hybrid Seeds", "Fodder Seeds", "Flower Seeds", "Other Seeds"].map((prod) => (
-                          <Grid size={{ xs: 6, sm: 4, lg: 3 }} key={prod}>
-                            <FormControlLabel control={<Checkbox sx={{ color: 'var(--primary-green)', '&.Mui-checked': { color: 'var(--primary-green)' } }} />} label={<Typography variant="body2">{prod}</Typography>} />
-                          </Grid>
-                        ))}
-                      </FormGroup>
-                    </Grid>
 
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <FormControl fullWidth>
-                        <InputLabel>How did you hear about us?</InputLabel>
-                        <Select label="How did you hear about us?">
-                          <MenuItem value="Social Media">Social Media</MenuItem>
-                          <MenuItem value="Friend">Friend / Reference</MenuItem>
-                          <MenuItem value="Internet">Search Engine</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth multiline rows={2} label="Additional Message" placeholder="Write your message (if any)" variant="outlined" />
-                    </Grid>
+                  <Box component="form" ref={formRef} onSubmit={sendEnquiry}>
+                    {/* Hidden field for checkbox products — value injected before send */}
+                    <input type="hidden" name="products_of_interest" />
 
-                    <Grid size={{ xs: 12 }}>
-                      <Button 
-                        variant="contained" 
-                        size="large"
-                        startIcon={<SendIcon />}
-                        sx={{ 
-                          bgcolor: 'var(--primary-green)', 
-                          px: 6, py: 2, 
-                          fontWeight: 900,
-                          borderRadius: '8px',
-                          mt: 2
-                        }}
-                      >
-                        SUBMIT ENQUIRY
-                      </Button>
+                    <Grid container spacing={3}>
+                      {/* Personal Details */}
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="dealer_name" label="Full Name *" placeholder="Enter your full name" variant="outlined" required />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="business_name" label="Business / Shop Name *" placeholder="Enter your business name" variant="outlined" required />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="mobile" label="Mobile Number *" placeholder="Enter your mobile number" variant="outlined" required />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="dealer_email" label="Email Address" placeholder="Enter your email address" variant="outlined" type="email" />
+                      </Grid>
+
+                      {/* Location */}
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="state" label="State *" placeholder="Enter your state" variant="outlined" required />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="district" label="District *" placeholder="Enter your district" variant="outlined" required />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="city" label="City / Town *" placeholder="Enter your city or town" variant="outlined" required />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="pincode" label="Pincode *" placeholder="Enter pincode" variant="outlined" required />
+                      </Grid>
+                      <Grid size={{ xs: 12 }}>
+                        <TextField fullWidth name="address" multiline rows={2} label="Complete Address *" placeholder="Enter your complete address" variant="outlined" required />
+                      </Grid>
+
+                      {/* Business Info */}
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <FormControl fullWidth required>
+                          <InputLabel>Business Type *</InputLabel>
+                          <Select label="Business Type *" name="business_type" defaultValue="">
+                            <MenuItem value="Retailer">Retailer</MenuItem>
+                            <MenuItem value="Distributor">Distributor</MenuItem>
+                            <MenuItem value="Wholesaler">Wholesaler</MenuItem>
+                            <MenuItem value="Agri Input Shop">Agri Input Shop</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <FormControl fullWidth>
+                          <InputLabel>Experience in Seeds Business</InputLabel>
+                          <Select label="Experience in Seeds Business" name="experience" defaultValue="">
+                            <MenuItem value="New / No Experience">New / No Experience</MenuItem>
+                            <MenuItem value="0-2 Years">0–2 Years</MenuItem>
+                            <MenuItem value="2-5 Years">2–5 Years</MenuItem>
+                            <MenuItem value="5+ Years">5+ Years</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+
+                      {/* Products of Interest (checkboxes → hidden field) */}
+                      <Grid size={{ xs: 12 }}>
+                        <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 1.5 }}>Products of Interest *</Typography>
+                        <FormGroup sx={{ display: 'flex', flexDirection: 'row' }}>
+                          {PRODUCTS.map((prod) => (
+                            <Grid size={{ xs: 6, sm: 4, lg: 3 }} key={prod}>
+                              <FormControlLabel
+                                control={
+                                  <Checkbox
+                                    checked={selectedProducts.includes(prod)}
+                                    onChange={() => handleProductToggle(prod)}
+                                    sx={{ color: 'var(--primary-green)', '&.Mui-checked': { color: 'var(--primary-green)' } }}
+                                  />
+                                }
+                                label={<Typography variant="body2">{prod}</Typography>}
+                              />
+                            </Grid>
+                          ))}
+                        </FormGroup>
+                      </Grid>
+
+                      {/* How did you hear */}
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <FormControl fullWidth>
+                          <InputLabel>How did you hear about us?</InputLabel>
+                          <Select label="How did you hear about us?" name="referral_source" defaultValue="">
+                            <MenuItem value="Social Media">Social Media</MenuItem>
+                            <MenuItem value="Friend / Reference">Friend / Reference</MenuItem>
+                            <MenuItem value="Search Engine">Search Engine</MenuItem>
+                            <MenuItem value="Field Agent">Field Agent / Company Rep</MenuItem>
+                            <MenuItem value="Advertisement">Advertisement</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+
+                      {/* Additional message */}
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="message" multiline rows={3} label="Additional Message" placeholder="Any specific requirements or queries..." variant="outlined" />
+                      </Grid>
+
+                      <Grid size={{ xs: 12 }}>
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          size="large"
+                          startIcon={<SendIcon />}
+                          sx={{
+                            bgcolor: 'var(--primary-green)',
+                            px: 6, py: 2,
+                            fontWeight: 900,
+                            borderRadius: '8px',
+                            mt: 2
+                          }}
+                          disabled={isSending}
+                        >
+                          {isSending ? 'Submitting...' : 'SUBMIT ENQUIRY'}
+                        </Button>
+                      </Grid>
                     </Grid>
-                  </Grid>
+                  </Box>
                 </CardContent>
               </Card>
             </Grid>
