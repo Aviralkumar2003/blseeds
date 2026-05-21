@@ -305,7 +305,7 @@ export default function Home() {
                 bgcolor: 'white',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
                 '&:hover': { bgcolor: '#f0f4f0' },
-                display: { xs: 'none', sm: 'flex' }
+                display: 'flex'
               }}
             >
               <ArrowBackIcon />
@@ -322,7 +322,7 @@ export default function Home() {
                 bgcolor: 'white',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
                 '&:hover': { bgcolor: '#f0f4f0' },
-                display: { xs: 'none', sm: 'flex' }
+                display: 'flex'
               }}
             >
               <ArrowForwardIcon />
