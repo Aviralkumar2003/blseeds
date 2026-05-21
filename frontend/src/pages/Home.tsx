@@ -9,6 +9,7 @@ import ProductCard from '../components/common/ProductCard';
 import { homeFeatures, homeStats, testimonials, allProducts } from '../data/constants';
 import founderPhoto from '../assets/Founding Members/Founder photo.jpg';
 import mdPhoto from '../assets/Founding Members/MD Photo.png';
+import greanPeasFarm from '../assets/Farm/Green Peas Farm.png'
 
 export default function Home() {
   const [activeFounder, setActiveFounder] = useState(0);
@@ -34,7 +35,7 @@ export default function Home() {
                     fontSize: { xs: '2.5rem', md: '4rem' },
                     lineHeight: 1.1,
                     mb: 3,
-                    color: 'var(--text-primary)',
+                    color: '#0a2815',
                     fontWeight: 900
                   }}
                 >
@@ -46,9 +47,9 @@ export default function Home() {
                   sx={{
                     fontSize: '1.1rem',
                     mb: 5,
-                    color: 'white',
+                    color: '#1a472a',
                     lineHeight: 1.7,
-                    fontWeight: 500
+                    fontWeight: 600
                   }}
                 >
                   We provide high germination, disease resistant and <br />
@@ -71,16 +72,12 @@ export default function Home() {
                     variant="outlined"
                     startIcon={<CallIcon />}
                     sx={{
-                      borderColor: '#e5e7eb',
-                      color: 'var(--text-primary)',
+                      borderColor: '#1a472a',
+                      color: 'white',
                       px: 4, py: 1.8,
                       fontSize: '0.9rem',
                       fontWeight: 800,
-                      bgcolor: 'white',
-                      '&:hover': {
-                        borderColor: 'var(--primary-green)',
-                        bgcolor: '#f8f9fa'
-                      }
+                      bgcolor: '#1a472a',
                     }}
                     component={RouterLink}
                     to="/contact"
@@ -93,7 +90,7 @@ export default function Home() {
             <Grid size={{ xs: 12, md: 5 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box
                 component="img"
-                src="https://media.istockphoto.com/id/1268947834/photo/groats-in-bags.jpg?s=612x612&w=0&k=20&c=L175sHBQnBss-wSwJd8DSQTd8-Trdy5zs6IzDpYH21o="
+                src="https://www.agrifarming.in/wp-content/uploads/Ultimate-Guide-to-Green-Peas-Matar-Farming-5.jpg"
                 sx={{
                   width: '100%',
                   borderRadius: '20px',
@@ -108,10 +105,10 @@ export default function Home() {
           sx={{
             position: 'absolute',
             top: 0, right: 0, bottom: 0, left: 0,
-            backgroundImage: 'url("https://t3.ftcdn.net/jpg/03/48/58/60/360_F_348586063_Qet050UULnm7C4IR4kzhnzUrcvQt7SQN.jpg")',
+            backgroundImage: `url(${greanPeasFarm})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: 0.75,
+            opacity: 0.40,
             zIndex: 1
           }}
         />
@@ -119,7 +116,6 @@ export default function Home() {
 
       {/* FEATURES ROW */}
       <Box sx={{ py: 6, borderBottom: '1px solid rgba(255,255,255,0.08)', position: 'relative', overflow: 'hidden' }}>
-        {/* Background image — replace the src URL with your dark green grass image */}
         <Box
           sx={{
             position: 'absolute',
@@ -424,10 +420,10 @@ export default function Home() {
                   </Typography>
 
                   <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic', mb: 3, position: 'relative', zIndex: 1, maxHeight: '180px', overflowY: 'auto', pr: 2, '&::-webkit-scrollbar': { width: '4px' }, '&::-webkit-scrollbar-thumb': { bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '4px' } }}>
-                    "Dear Farmers & Valued Partners,<br/>
-                    At B.L. Seeds Farm, we are committed to delivering excellence through high-quality seeds that ensure better productivity and sustainable growth. As a Managing Director, my vision is to combine traditional farming values with modern agricultural innovation.<br/>
-                    We specialize in premium green pea seeds, developed with care, research, and field experience to give you the best results. Our focus is not just on seeds, but on building long-term trust and success for every farmer associated with us.<br/>
-                    We believe that strong seeds create strong harvests, and strong relationships create a successful future. Your trust inspires us to continuously improve and serve you better.<br/>
+                    "Dear Farmers & Valued Partners,<br />
+                    At B.L. Seeds Farm, we are committed to delivering excellence through high-quality seeds that ensure better productivity and sustainable growth. As a Managing Director, my vision is to combine traditional farming values with modern agricultural innovation.<br />
+                    We specialize in premium green pea seeds, developed with care, research, and field experience to give you the best results. Our focus is not just on seeds, but on building long-term trust and success for every farmer associated with us.<br />
+                    We believe that strong seeds create strong harvests, and strong relationships create a successful future. Your trust inspires us to continuously improve and serve you better.<br />
                     Thank you for being a part of our journey."
                   </Typography>
 
@@ -436,7 +432,7 @@ export default function Home() {
                       Om Baghel
                     </Typography>
                     <Typography variant="subtitle1" sx={{ color: '#2e7d32', fontWeight: 700, letterSpacing: '0.05rem' }}>
-                      Managing Director<br/>
+                      Managing Director<br />
                       B.L. Seeds Farm
                     </Typography>
                   </Box>
@@ -496,7 +492,7 @@ export default function Home() {
       </Box> */}
 
       {/* DEALER CTA BANNER */}
-      {/* <Box sx={{ py: 6, bgcolor: '#f0f7f2', mx: { md: 4 }, borderRadius: { md: '20px' }, mb: 10 }}>
+      <Box sx={{ py: 6, bgcolor: '#f0f7f2', mx: { md: 4 }, borderRadius: { md: '20px' }, mb: 10 }}>
         <Container maxWidth="xl">
           <Stack
             direction={{ xs: 'column', md: 'row' }}
@@ -535,7 +531,7 @@ export default function Home() {
             </Button>
           </Stack>
         </Container>
-      </Box> */}
+      </Box>
 
       {/* WHATSAPP FLOAT */}
       {/* <Box

@@ -5,7 +5,7 @@ import SectionHeader from '../components/common/SectionHeader';
 import { contactInfo, whyConnectReasons } from '../data/constants';
 import { useRef, useState } from 'react';
 import emailjs from "@emailjs/browser";
-import { VITE_EMAILJS_PUBLIC_KEY, VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID } from '../data/config';
+import { VITE_EMAILJS_PUBLIC_KEY, VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_CONTACT_TEMPLATE_ID } from '../data/config';
 
 export default function Contact() {
 
@@ -19,7 +19,7 @@ export default function Contact() {
 
     emailjs.sendForm(
       VITE_EMAILJS_SERVICE_ID,
-      VITE_EMAILJS_TEMPLATE_ID,
+      VITE_EMAILJS_CONTACT_TEMPLATE_ID,
       formRef.current,
       VITE_EMAILJS_PUBLIC_KEY
     ).then(
@@ -88,6 +88,9 @@ export default function Contact() {
                       </Grid>
                       <Grid size={{ xs: 12, sm: 6 }}>
                         <TextField fullWidth name="from_email" label="Your Email" placeholder="Enter your email" variant="outlined" type="email" required />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="contact" label="Your Contact No." placeholder="Enter your 10 digit Contact No." variant="outlined" type="tel" required slotProps={{ htmlInput: { maxLength: 10 } }} />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 12 }}>
                         <TextField fullWidth name="subject" label="Subject" placeholder="Enter subject" variant="outlined" required />

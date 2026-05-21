@@ -16,6 +16,13 @@ const quickLinks = [
   // { name: 'Products', path: '/products' },
   // { name: 'Gallery', path: '/gallery' },
   // { name: 'Blog', path: '/blog' },
+  { name: 'Contract Farming Program', path: '/dealer-enquiry' },
+];
+
+const socialButtons = [
+  { Icon: FacebookIcon, url: CONTACT_DETAILS.social.facebook },
+  { Icon: InstagramIcon, url: CONTACT_DETAILS.social.instagram },
+  { Icon: LinkedInIcon, url: CONTACT_DETAILS.social.linkedin },
 ];
 
 const socialButtons = [

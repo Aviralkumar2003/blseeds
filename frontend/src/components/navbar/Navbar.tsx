@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { 
-  AppBar, Box, Toolbar, IconButton, Container, Button, 
-  Drawer, List, ListItem, ListItemButton, Stack, 
+import {
+  AppBar, Box, Toolbar, IconButton, Container, Button,
+  Drawer, List, ListItem, ListItemButton, Stack,
   useScrollTrigger, Link, alpha
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -22,7 +22,7 @@ const pages = [
   // { name: 'Gallery', path: '/gallery' },
   // { name: 'Blog', path: '/blog' },
   { name: 'Contact', path: '/contact' },
-  // { name: 'Dealer Enquiry', path: '/dealer-enquiry'}
+  { name: 'Contract Farming Program', path: '/dealer-enquiry' }
 ];
 
 const primaryGreen = '#0b5d1e';
@@ -30,7 +30,7 @@ const primaryGreen = '#0b5d1e';
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const location = useLocation();
-  
+
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 50,
@@ -45,26 +45,26 @@ export default function Navbar() {
 
   return (
     <>
-      <AppBar 
-        position="sticky" 
+      <AppBar
+        position="sticky"
         elevation={0}
-        sx={{ 
+        sx={{
           top: isScrolled ? { xs: '10px', md: '15px' } : 0,
           left: isScrolled ? { xs: '12px', md: '20px' } : 0,
           right: isScrolled ? { xs: '12px', md: '20px' } : 0,
           width: isScrolled ? { xs: 'calc(100% - 24px)', md: 'calc(100% - 40px)' } : '100%',
           mx: 'auto',
           zIndex: 1100,
-          backgroundColor: isScrolled 
+          backgroundColor: isScrolled
             ? alpha('#ffffff', 0.85)
             : (isHome ? 'transparent' : alpha('#ffffff', 0.75)),
           backdropFilter: 'blur(16px)',
           borderRadius: isScrolled ? '20px' : 0,
-          border: isScrolled 
-            ? `1px solid ${alpha('#000', 0.06)}` 
+          border: isScrolled
+            ? `1px solid ${alpha('#000', 0.06)}`
             : `1px solid ${alpha('#000', 0.04)}`,
-          boxShadow: isScrolled 
-            ? '0 8px 24px rgba(0, 0, 0, 0.08)' 
+          boxShadow: isScrolled
+            ? '0 8px 24px rgba(0, 0, 0, 0.08)'
             : 'none',
           transition: 'all 0.4s cubic-bezier(0.23, 1, 0.320, 1)',
           color: '#1f2933',
@@ -72,13 +72,13 @@ export default function Navbar() {
         }}
       >
         <Container maxWidth="xl">
-          <Toolbar 
-            disableGutters 
-            sx={{ 
+          <Toolbar
+            disableGutters
+            sx={{
               justifyContent: 'space-between',
-              minHeight: { 
-                xs: isScrolled ? '56px' : '64px', 
-                md: isScrolled ? '64px' : '76px' 
+              minHeight: {
+                xs: isScrolled ? '56px' : '64px',
+                md: isScrolled ? '64px' : '76px'
               },
               transition: 'min-height 0.4s cubic-bezier(0.23, 1, 0.320, 1)',
               px: { xs: 0, sm: 2 }
@@ -94,7 +94,7 @@ export default function Navbar() {
                 justifyContent: 'center',
                 textDecoration: 'none',
                 transition: 'transform 0.3s cubic-bezier(0.23, 1, 0.320, 1)',
-                '&:hover': { 
+                '&:hover': {
                   transform: 'scale(1.04)',
                 }
               }}
@@ -113,10 +113,10 @@ export default function Navbar() {
             </Box>
 
             {/* DESKTOP NAVIGATION */}
-            <Stack 
-              direction="row" 
-              spacing={0.5} 
-              sx={{ 
+            <Stack
+              direction="row"
+              spacing={0.5}
+              sx={{
                 display: { xs: 'none', lg: 'flex' },
                 alignItems: 'center'
               }}
@@ -128,7 +128,7 @@ export default function Navbar() {
                     key={page.name}
                     component={RouterLink}
                     to={page.path}
-                    sx={{ 
+                    sx={{
                       color: isActive ? primaryGreen : '#1f2933',
                       fontWeight: isActive ? 600 : 500,
                       fontSize: '0.95rem',
@@ -152,16 +152,16 @@ export default function Navbar() {
             </Stack>
 
             {/* CTA BUTTON & MOBILE TOGGLE */}
-            <Stack 
-              direction="row" 
-              spacing={{ xs: 1, lg: 2 }} 
+            <Stack
+              direction="row"
+              spacing={{ xs: 1, lg: 2 }}
               sx={{ alignItems: 'center' }}
             >
               <Box sx={{ display: { lg: 'none' } }}>
                 <IconButton
                   aria-label="open drawer"
                   onClick={handleDrawerToggle}
-                  sx={{ 
+                  sx={{
                     bgcolor: isScrolled ? alpha(primaryGreen, 0.08) : alpha('#000', 0.02),
                     color: primaryGreen,
                     borderRadius: '12px',
@@ -188,13 +188,13 @@ export default function Navbar() {
         onClose={handleDrawerToggle}
         slotProps={{
           paper: {
-            sx: { 
-              width: { xs: '100%', sm: 340 }, 
+            sx: {
+              width: { xs: '100%', sm: 340 },
               bgcolor: alpha('#ffffff', 0.88),
               backdropFilter: 'blur(20px)',
               borderLeft: `1px solid ${alpha('#000', 0.06)}`,
               p: 0,
-              display: 'flex', 
+              display: 'flex',
               flexDirection: 'column',
               boxShadow: '-8px 0 32px rgba(0, 0, 0, 0.08)'
             }
@@ -202,11 +202,11 @@ export default function Navbar() {
         }}
       >
         {/* Header */}
-        <Box sx={{ 
-          p: 2, 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between', 
+        <Box sx={{
+          p: 2,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           borderBottom: `1px solid ${alpha('#000', 0.06)}`,
           bgcolor: 'transparent'
         }}>
@@ -214,16 +214,16 @@ export default function Navbar() {
             component="img"
             src={Logo}
             alt="BL Seeds Logo"
-            sx={{ 
-              height: 48, 
+            sx={{
+              height: 48,
               width: 'auto',
               objectFit: 'contain'
             }}
           />
-          <IconButton 
-            onClick={handleDrawerToggle} 
-            sx={{ 
-              color: '#1f2933', 
+          <IconButton
+            onClick={handleDrawerToggle}
+            sx={{
+              color: '#1f2933',
               bgcolor: alpha('#000', 0.04),
               borderRadius: '10px',
               transition: 'all 0.3s cubic-bezier(0.23, 1, 0.320, 1)',
@@ -236,18 +236,18 @@ export default function Navbar() {
             <CloseIcon />
           </IconButton>
         </Box>
-        
+
         {/* Navigation */}
         <List sx={{ pt: 2, px: 1.5, flex: 1 }}>
           {pages.map((page) => {
             const isActive = location.pathname === page.path;
             return (
               <ListItem key={page.name} disablePadding sx={{ mb: 0.5 }}>
-                <ListItemButton 
-                  component={RouterLink} 
-                  to={page.path} 
+                <ListItemButton
+                  component={RouterLink}
+                  to={page.path}
                   onClick={handleDrawerToggle}
-                  sx={{ 
+                  sx={{
                     borderRadius: '12px',
                     py: 1.4,
                     px: 2,
@@ -257,7 +257,7 @@ export default function Navbar() {
                     fontSize: '0.95rem',
                     transition: 'all 0.3s cubic-bezier(0.23, 1, 0.320, 1)',
                     letterSpacing: '0.2px',
-                    '&:hover': { 
+                    '&:hover': {
                       bgcolor: alpha(primaryGreen, 0.08),
                       color: primaryGreen,
                       transform: 'translateX(2px)'
@@ -273,11 +273,11 @@ export default function Navbar() {
             );
           })}
         </List>
-        
+
         {/* Footer Section */}
-        <Box 
-          sx={{ 
-            p: 2.5, 
+        <Box
+          sx={{
+            p: 2.5,
             borderTop: `1px solid ${alpha('#000', 0.06)}`,
             bgcolor: alpha(primaryGreen, 0.02)
           }}
@@ -286,13 +286,13 @@ export default function Navbar() {
           <Stack spacing={1.8} sx={{ mb: 3 }}>
             <Stack direction="row" spacing={1.2} sx={{ alignItems: 'flex-start' }}>
               <EmailIcon sx={{ fontSize: '1rem', color: primaryGreen, mt: 0.3, flexShrink: 0 }} />
-              <Link 
-                href={CONTACT_DETAILS.emailHref} 
-                color="inherit" 
+              <Link
+                href={CONTACT_DETAILS.emailHref}
+                color="inherit"
                 underline="none"
-                sx={{ 
-                  fontSize: '0.85rem', 
-                  fontWeight: 500, 
+                sx={{
+                  fontSize: '0.85rem',
+                  fontWeight: 500,
                   color: '#667085',
                   transition: 'color 0.2s ease',
                   '&:hover': { color: primaryGreen }
@@ -303,13 +303,13 @@ export default function Navbar() {
             </Stack>
             <Stack direction="row" spacing={1.2} sx={{ alignItems: 'flex-start' }}>
               <PhoneIcon sx={{ fontSize: '1rem', color: primaryGreen, mt: 0.3, flexShrink: 0 }} />
-              <Link 
-                href={CONTACT_DETAILS.phoneHref} 
-                color="inherit" 
+              <Link
+                href={CONTACT_DETAILS.phoneHref}
+                color="inherit"
                 underline="none"
-                sx={{ 
-                  fontSize: '0.85rem', 
-                  fontWeight: 500, 
+                sx={{
+                  fontSize: '0.85rem',
+                  fontWeight: 500,
                   color: '#667085',
                   transition: 'color 0.2s ease',
                   '&:hover': { color: primaryGreen }
@@ -327,20 +327,20 @@ export default function Navbar() {
               { icon: <InstagramIcon />, url: CONTACT_DETAILS.social.instagram },
               { icon: <LinkedInIcon />, url: CONTACT_DETAILS.social.linkedin },
             ].map((social, index) => (
-              <Link 
+              <Link
                 key={index}
-                href={social.url} 
+                href={social.url}
                 color="inherit"
-                sx={{ 
+                sx={{
                   display: 'flex',
                   p: 1,
                   borderRadius: '10px',
                   bgcolor: alpha('#000', 0.03),
                   transition: 'all 0.3s cubic-bezier(0.23, 1, 0.320, 1)',
-                  '&:hover': { 
+                  '&:hover': {
                     color: 'white',
                     bgcolor: primaryGreen,
-                    transform: 'translateY(-3px)' 
+                    transform: 'translateY(-3px)'
                   },
                   '& svg': { fontSize: '1.05rem' }
                 }}
