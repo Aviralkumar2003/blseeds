@@ -22,7 +22,7 @@ const pages = [
   // { name: 'Gallery', path: '/gallery' },
   // { name: 'Blog', path: '/blog' },
   { name: 'Contact', path: '/contact' },
-  { name: 'Dealer Enquiry', path: '/dealer-enquiry'}
+  // { name: 'Dealer Enquiry', path: '/dealer-enquiry'}
 ];
 
 const primaryGreen = '#0b5d1e';
