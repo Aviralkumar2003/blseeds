@@ -1,6 +1,5 @@
-import { Box, Container, Grid, Typography, Link, IconButton, TextField, Button, Divider } from '@mui/material';
+import { Box, Container, Grid, Typography, Link, IconButton, Divider } from '@mui/material';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
@@ -8,13 +7,21 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import { Link as RouterLink } from 'react-router-dom';
+import { CONTACT_DETAILS } from '../../data/constants';
 
 const quickLinks = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
+  { name: 'Contact Us', path: '/contact' },
   // { name: 'Products', path: '/products' },
   // { name: 'Gallery', path: '/gallery' },
   // { name: 'Blog', path: '/blog' },
+];
+
+const socialButtons = [
+  { Icon: FacebookIcon, url: CONTACT_DETAILS.social.facebook },
+  { Icon: InstagramIcon, url: CONTACT_DETAILS.social.instagram },
+  { Icon: LinkedInIcon, url: CONTACT_DETAILS.social.linkedin },
 ];
 
 export default function Footer() {
@@ -31,11 +38,7 @@ export default function Footer() {
               At B.L. Seeds Farm, quality is not a benchmark—it is a philosophy embedded in every decision, every process, and every seed we produce.
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
-              {[
-                { Icon: FacebookIcon, url: 'https://www.facebook.com/share/14jmEQoFDxw/?mibextid=wwXIfr' },
-                { Icon: InstagramIcon, url: 'https://www.instagram.com/blseeds' },
-                { Icon: LinkedInIcon, url: 'https://www.linkedin.com/company/blseedsfarm/' }
-              ].map(({ Icon, url }, index) => (
+              {socialButtons.map(({ Icon, url }, index) => (
                 <IconButton
                   key={index}
                   component="a"
@@ -93,19 +96,23 @@ export default function Footer() {
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2.5 }}>
               <LocationOnIcon sx={{ color: 'primary.main', mr: 2, fontSize: '1.2rem' }} />
               <Typography variant="body2" sx={{ color: 'grey.500' }}>
-                B.L SEEDS FARM, Station road Railmandi, Jaswantnagar, Etawah, 206245
+                {CONTACT_DETAILS.address}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2.5 }}>
               <PhoneIcon sx={{ color: 'primary.main', mr: 2, fontSize: '1.2rem' }} />
               <Typography variant="body2" sx={{ color: 'grey.500' }}>
-                +91 8449050067
+                <Link href={CONTACT_DETAILS.phoneHref} color="inherit" underline="none">
+                  {CONTACT_DETAILS.phone}
+                </Link>
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <EmailIcon sx={{ color: 'primary.main', mr: 2, fontSize: '1.2rem' }} />
               <Typography variant="body2" sx={{ color: 'grey.500' }}>
-                info.blseedsfarm@gmail.com
+                <Link href={CONTACT_DETAILS.emailHref} color="inherit" underline="none">
+                  {CONTACT_DETAILS.email}
+                </Link>
               </Typography>
             </Box>
           </Grid>

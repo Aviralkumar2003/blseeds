@@ -13,6 +13,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import Logo from '../../assets/Logo.svg';
+import { CONTACT_DETAILS } from '../../data/constants';
 
 const pages = [
   { name: 'Home', path: '/' },
@@ -20,7 +21,7 @@ const pages = [
   // { name: 'Products', path: '/products' },
   // { name: 'Gallery', path: '/gallery' },
   // { name: 'Blog', path: '/blog' },
-  // { name: 'Contact', path: '/contact' },
+  { name: 'Contact', path: '/contact' },
   // { name: 'Dealer Enquiry', path: '/dealer-enquiry'}
 ];
 
@@ -286,7 +287,7 @@ export default function Navbar() {
             <Stack direction="row" spacing={1.2} sx={{ alignItems: 'flex-start' }}>
               <EmailIcon sx={{ fontSize: '1rem', color: primaryGreen, mt: 0.3, flexShrink: 0 }} />
               <Link 
-                href="mailto:info.blseedsfarm@gmail.com" 
+                href={CONTACT_DETAILS.emailHref} 
                 color="inherit" 
                 underline="none"
                 sx={{ 
@@ -297,13 +298,13 @@ export default function Navbar() {
                   '&:hover': { color: primaryGreen }
                 }}
               >
-                info.blseedsfarm@gmail.com
+                {CONTACT_DETAILS.email}
               </Link>
             </Stack>
             <Stack direction="row" spacing={1.2} sx={{ alignItems: 'flex-start' }}>
               <PhoneIcon sx={{ fontSize: '1rem', color: primaryGreen, mt: 0.3, flexShrink: 0 }} />
               <Link 
-                href="tel:+918449050067" 
+                href={CONTACT_DETAILS.phoneHref} 
                 color="inherit" 
                 underline="none"
                 sx={{ 
@@ -314,7 +315,7 @@ export default function Navbar() {
                   '&:hover': { color: primaryGreen }
                 }}
               >
-                +91 84490 50067
+                {CONTACT_DETAILS.phone}
               </Link>
             </Stack>
           </Stack>
@@ -322,9 +323,9 @@ export default function Navbar() {
           {/* Social Links */}
           <Stack direction="row" spacing={1} sx={{ justifyContent: 'center', mb: 3 }}>
             {[
-              { icon: <FacebookIcon />, url: 'https://www.facebook.com/share/14jmEQoFDxw/?mibextid=wwXIfr' },
-              { icon: <InstagramIcon />, url: 'https://www.instagram.com/blseeds' },
-              { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/company/blseedsfarm/' },
+              { icon: <FacebookIcon />, url: CONTACT_DETAILS.social.facebook },
+              { icon: <InstagramIcon />, url: CONTACT_DETAILS.social.instagram },
+              { icon: <LinkedInIcon />, url: CONTACT_DETAILS.social.linkedin },
             ].map((social, index) => (
               <Link 
                 key={index}

@@ -4,8 +4,15 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { CONTACT_DETAILS } from "../../data/constants";
 
 export default function TopBar() {
+  const socials = [
+    { icon: <FacebookIcon />, url: CONTACT_DETAILS.social.facebook },
+    { icon: <InstagramIcon />, url: CONTACT_DETAILS.social.instagram },
+    { icon: <LinkedInIcon />, url: CONTACT_DETAILS.social.linkedin },
+  ];
+
   return (
     <Box
       sx={{
@@ -34,8 +41,8 @@ export default function TopBar() {
                   '&:hover': { color: 'white' }
                 }}
               >
-                <Link href="mailto:info.blseedsfarm@gmail.com" color="inherit" underline="none">
-                  info.blseedsfarm@gmail.com
+                <Link href={CONTACT_DETAILS.emailHref} color="inherit" underline="none">
+                  {CONTACT_DETAILS.email}
                 </Link>
               </Typography>
             </Stack>
@@ -51,22 +58,20 @@ export default function TopBar() {
                   '&:hover': { color: 'white' }
                 }}
               >
-                <Link href="tel:+918449050067" color="inherit" underline="none">
-                  +91 84490 50067
+                <Link href={CONTACT_DETAILS.phoneHref} color="inherit" underline="none">
+                  {CONTACT_DETAILS.phone}
                 </Link>
               </Typography>
             </Stack>
           </Stack>
 
           <Stack direction="row" spacing={2.5} sx={{ alignItems: 'center' }}>
-            {[
-              { icon: <FacebookIcon />, url: 'https://www.facebook.com/share/14jmEQoFDxw/?mibextid=wwXIfr' },
-              { icon: <InstagramIcon />, url: 'https://www.instagram.com/blseeds' },
-              { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/company/blseedsfarm/' },
-            ].map((social, index) => (
+            {socials.map((social, index) => (
               <Link
                 key={index}
                 href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 color="inherit"
                 sx={{
                   display: 'flex',

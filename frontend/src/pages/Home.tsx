@@ -49,8 +49,8 @@ export default function Home() {
                   We provide high germination, disease resistant and <br />
                   best quality seeds for every kind of crop.
                 </Typography>
-                {/* <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-                  <Button
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+                  {/* <Button
                     variant="contained"
                     endIcon={<ArrowForwardIcon />}
                     sx={{
@@ -61,7 +61,7 @@ export default function Home() {
                     }}
                   >
                     EXPLORE PRODUCTS
-                  </Button>
+                  </Button> */}
                   <Button
                     variant="outlined"
                     startIcon={<CallIcon />}
@@ -77,10 +77,12 @@ export default function Home() {
                         bgcolor: '#f8f9fa'
                       }
                     }}
+                    component={RouterLink}
+                    to="/contact"
                   >
                     CONTACT US
                   </Button>
-                </Stack> */}
+                </Stack>
               </Box>
             </Grid>
             <Grid size={{ xs: 12, md: 5 }} sx={{ display: { xs: 'none', md: 'block' } }}>
