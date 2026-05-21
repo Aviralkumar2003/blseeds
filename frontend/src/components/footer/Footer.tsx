@@ -25,6 +25,12 @@ const socialButtons = [
   { Icon: LinkedInIcon, url: CONTACT_DETAILS.social.linkedin },
 ];
 
+const socialButtons = [
+  { Icon: FacebookIcon, url: CONTACT_DETAILS.social.facebook },
+  { Icon: InstagramIcon, url: CONTACT_DETAILS.social.instagram },
+  { Icon: LinkedInIcon, url: CONTACT_DETAILS.social.linkedin },
+];
+
 export default function Footer() {
   return (
     <Box sx={{ bgcolor: '#121212', color: 'white', pt: 10, pb: 4, fontFamily: 'var(--body-font)' }}>
