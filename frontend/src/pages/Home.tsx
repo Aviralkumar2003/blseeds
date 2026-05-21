@@ -4,9 +4,7 @@ import CallIcon from '@mui/icons-material/Call';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link as RouterLink } from 'react-router-dom';
-import SectionHeader from '../components/common/SectionHeader';
-import ProductCard from '../components/common/ProductCard';
-import { homeFeatures, homeStats, testimonials, allProducts } from '../data/constants';
+import { homeFeatures } from '../data/constants';
 import founderPhoto from '../assets/Founding Members/Founder photo.jpg';
 import mdPhoto from '../assets/Founding Members/MD Photo.png';
 import greanPeasFarm from '../assets/Farm/Green Peas Farm.png'

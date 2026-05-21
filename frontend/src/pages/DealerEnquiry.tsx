@@ -1,14 +1,9 @@
-import { Box, Container, Typography, Grid, Stack, Button, TextField, MenuItem, Select, FormControl, InputLabel, Checkbox, FormControlLabel, FormGroup, Card, CardContent, Avatar } from '@mui/material';
+import { Box, Container, Typography, Grid, Stack, Button, TextField, Card, CardContent } from '@mui/material';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SendIcon from '@mui/icons-material/Send';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import CampaignIcon from '@mui/icons-material/Campaign';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import GrassIcon from '@mui/icons-material/Grass';
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { dealerBenefits, CONTACT_DETAILS } from '../data/constants';
@@ -22,11 +17,7 @@ export default function DealerEnquiry() {
   const [isSending, setIsSending] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
 
-  const handleProductToggle = (product: string) => {
-    setSelectedProducts(prev =>
-      prev.includes(product) ? prev.filter(p => p !== product) : [...prev, product]
-    );
-  };
+
 
   const sendEnquiry = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

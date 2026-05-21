@@ -2,9 +2,6 @@ import { Box, Container, Typography, Grid, Stack, Button, List, ListItem, ListIt
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import PageHero from '../components/common/PageHero';
-import SectionHeader from '../components/common/SectionHeader';
-import { aboutValues, aboutJourney } from '../data/constants';
-import farmImage from '../assets/Farm/image.png';
 import QualityTesting from '../assets/Quality Standards/Testing.png';
 import Storage from '../assets/Quality Standards/Storage Facility.png';
 import Processing from '../assets/Quality Standards/Factory.png';
