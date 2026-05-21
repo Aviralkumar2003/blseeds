@@ -20,6 +20,25 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
 // ==========================================
+// ✅ CENTRAL CONTACT DETAILS — Edit here to update everywhere
+// ==========================================
+export const CONTACT_DETAILS = {
+  phone: '+91 8449050067',
+  phoneHref: 'tel:+918449050067',
+  email: 'info.blseedsfarm@gmail.com',
+  emailHref: 'mailto:info.blseedsfarm@gmail.com',
+  whatsapp: '+91 8449050067',
+  whatsappHref: 'https://wa.me/918449050067',
+  address: 'B.L SEEDS FARM, Station road Railmandi, Jaswantnagar, Etawah, 206245',
+  businessHours: 'Monday - Saturday: 9:00 AM - 6:00 PM',
+  social: {
+    facebook: 'https://www.facebook.com/share/14jmEQoFDxw/?mibextid=wwXIfr',
+    instagram: 'https://www.instagram.com/blseeds',
+    linkedin: 'https://www.linkedin.com/company/blseedsfarm/',
+  },
+};
+
+// ==========================================
 // HOME PAGE DATA
 // ==========================================
 export const homeFeatures = [
@@ -90,11 +109,11 @@ export const allProducts = [
 // CONTACT PAGE DATA
 // ==========================================
 export const contactInfo = [
-  { icon: <PhoneIcon />, title: "Call Us", content: "+91 98765 43210", sub: "Mon - Sat: 9:00 AM - 6:00 PM" },
-  { icon: <EmailIcon />, title: "Email Us", content: "info@blseedsfarm.com", sub: "We reply within 24 hours" },
-  { icon: <LocationOnIcon />, title: "Our Address", content: "BL Seeds Farm, 123, Agricultural Road, Indore, Madhya Pradesh - 452001, India." },
-  { icon: <AccessTimeIcon />, title: "Business Hours", content: "Monday - Saturday: 9:00 AM - 6:00 PM", sub: "Sunday Closed" },
-  { icon: <WhatsAppIcon />, title: "WhatsApp", content: "+91 98765 43210", sub: "Chat with us on WhatsApp" },
+  { icon: <PhoneIcon />, title: "Call Us", content: CONTACT_DETAILS.phone, sub: "Mon - Sat: 9:00 AM - 6:00 PM" },
+  { icon: <EmailIcon />, title: "Email Us", content: CONTACT_DETAILS.email, sub: "We reply within 24 hours" },
+  { icon: <LocationOnIcon />, title: "Our Address", content: CONTACT_DETAILS.address },
+  { icon: <AccessTimeIcon />, title: "Business Hours", content: CONTACT_DETAILS.businessHours, sub: "Sunday Closed" },
+  { icon: <WhatsAppIcon />, title: "WhatsApp", content: CONTACT_DETAILS.whatsapp, sub: "Chat with us on WhatsApp" },
 ];
 
 export const whyConnectReasons = [

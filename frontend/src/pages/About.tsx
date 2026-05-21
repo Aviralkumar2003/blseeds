@@ -8,6 +8,7 @@ import farmImage from '../assets/Farm/image.png';
 import QualityTesting from '../assets/Quality Standards/Testing.png';
 import Storage from '../assets/Quality Standards/Storage Facility.png';
 import Processing from '../assets/Quality Standards/Factory.png';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function About() {
   return (
@@ -285,7 +286,7 @@ export default function About() {
                         bgcolor: 'rgba(11, 93, 30, 0.8)', p: 1.5, textAlign: 'center'
                       }}
                     >
-                      <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'var(--accent-gold)'  }}>Safe & Hygienic Storage</Typography>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'var(--accent-gold)' }}>Safe & Hygienic Storage</Typography>
                     </Box>
                   </Box>
                 </Grid>
@@ -319,7 +320,7 @@ export default function About() {
       </Box> */}
 
       {/* BOTTOM CTA */}
-      {/* <Box sx={{ py: 10, bgcolor: 'var(--primary-green)', color: 'white' }}>
+      <Box sx={{ py: 10, bgcolor: 'var(--primary-green)', color: 'white' }}>
         <Container maxWidth="xl">
           <Stack
             direction={{ xs: 'column', md: 'row' }}
@@ -330,7 +331,7 @@ export default function About() {
               <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
                 Let's Grow Together for a Better Tomorrow
               </Typography>
-              <Typography variant="body1" sx={{ opacity: 0.9, fontSize: '1.1rem' }}>
+              <Typography variant="body1" sx={{ opacity: 0.9, fontSize: '1.1rem', color: 'white' }}>
                 We are always here to support our farmers.
               </Typography>
             </Box>
@@ -344,12 +345,14 @@ export default function About() {
                 fontWeight: 800,
                 '&:hover': { borderColor: 'white', bgcolor: 'rgba(255,255,255,0.1)' }
               }}
+              component={RouterLink}
+              to="/contact"
             >
               CONTACT US
             </Button>
           </Stack>
         </Container>
-      </Box> */}
+      </Box>
     </Box>
   );
 }

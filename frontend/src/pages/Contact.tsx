@@ -1,13 +1,43 @@
 import { Box, Container, Typography, Grid, Stack, Button, TextField, MenuItem, Select, FormControl, InputLabel, Card, CardContent, Avatar } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import PageHero from '../components/common/PageHero';
 import SectionHeader from '../components/common/SectionHeader';
 import { contactInfo, whyConnectReasons } from '../data/constants';
+import { useRef, useState } from 'react';
+import emailjs from "@emailjs/browser";
+import { VITE_EMAILJS_PUBLIC_KEY, VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID } from '../data/config';
 
 export default function Contact() {
+
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+    setIsSending(true);
+
+    emailjs.sendForm(
+      VITE_EMAILJS_SERVICE_ID,
+      VITE_EMAILJS_TEMPLATE_ID,
+      formRef.current,
+      VITE_EMAILJS_PUBLIC_KEY
+    ).then(
+      () => {
+        alert("Email sent successfully!");
+        formRef.current?.reset();
+        setIsSending(false);
+      },
+      (error) => {
+        alert("Failed to send email. Please try again.");
+        console.error(error);
+        setIsSending(false);
+      }
+    );
+  };
+
   return (
-    <Box sx={{ pt: { xs: '70px', md: '125px' } }}>
+    <Box>
       {/* HERO SECTION */}
       <PageHero
         title="Contact Us"
@@ -50,52 +80,42 @@ export default function Contact() {
               <Card sx={{ borderRadius: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', border: '1px solid #f0f0f0', p: { xs: 2, md: 4 } }}>
                 <CardContent>
                   <Typography variant="h4" sx={{ fontWeight: 800, mb: 4 }}>Send Us a Message</Typography>
-                  
-                  <Grid container spacing={3}>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="Your Name *" placeholder="Enter your full name" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="Your Email *" placeholder="Enter your email" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="Your Phone Number *" placeholder="Enter your phone number" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField fullWidth label="Subject *" placeholder="Enter subject" variant="outlined" />
-                    </Grid>
-                    <Grid size={{ xs: 12 }}>
-                      <FormControl fullWidth>
-                        <InputLabel>Inquiry Type *</InputLabel>
-                        <Select label="Inquiry Type *">
-                          <MenuItem value="General">General Inquiry</MenuItem>
-                          <MenuItem value="Product">Product Inquiry</MenuItem>
-                          <MenuItem value="Dealer">Dealer Inquiry</MenuItem>
-                          <MenuItem value="Support">Support</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    <Grid size={{ xs: 12 }}>
-                      <TextField fullWidth multiline rows={5} label="Your Message *" placeholder="Write your message here..." variant="outlined" />
-                    </Grid>
 
-                    <Grid size={{ xs: 12 }}>
-                      <Button 
-                        variant="contained" 
-                        size="large"
-                        startIcon={<SendIcon />}
-                        sx={{ 
-                          bgcolor: '#0b3d11', 
-                          px: 6, py: 2, 
-                          fontWeight: 900,
-                          borderRadius: '8px',
-                          mt: 2
-                        }}
-                      >
-                        SEND MESSAGE
-                      </Button>
+                  <Box component="form" ref={formRef} onSubmit={sendEmail}>
+                    <Grid container spacing={3}>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="from_name" label="Your Name" placeholder="Enter your full name" variant="outlined" required />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField fullWidth name="from_email" label="Your Email" placeholder="Enter your email" variant="outlined" type="email" required />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 12 }}>
+                        <TextField fullWidth name="subject" label="Subject" placeholder="Enter subject" variant="outlined" required />
+                      </Grid>
+                      <Grid size={{ xs: 12 }}>
+                        <TextField fullWidth name="message" multiline rows={5} label="Your Message" placeholder="Write your message here..." variant="outlined" required />
+                      </Grid>
+
+                      <Grid size={{ xs: 12 }}>
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          size="large"
+                          startIcon={<SendIcon />}
+                          sx={{
+                            bgcolor: '#0b3d11',
+                            px: 6, py: 2,
+                            fontWeight: 900,
+                            borderRadius: '8px',
+                            mt: 2
+                          }}
+                          disabled={isSending}
+                        >
+                          {isSending ? "Sending..." : "SEND MESSAGE"}
+                        </Button>
+                      </Grid>
                     </Grid>
-                  </Grid>
+                  </Box>
                 </CardContent>
               </Card>
             </Grid>
@@ -105,31 +125,14 @@ export default function Contact() {
 
       {/* MAP SECTION */}
       <Box sx={{ height: '450px', width: '100%', bgcolor: '#eee', position: 'relative' }}>
-        <Box 
+        <Box
           component="iframe"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117763.55667323812!2d75.79380907156976!3d22.72391173160455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcad1b449735%3A0x119c7735785c6b73!2sIndore%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1716200000000!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.850176464714!2d78.9078832!3d26.8765008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3975db7ccef2c913%3A0x9d122be600459451!2sB.L%20Seeds%20Farm!5e0!3m2!1sen!2sin!4v1716200000000!5m2!1sen!2sin"
           sx={{ width: '100%', height: '100%', border: 'none' }}
           allowFullScreen
           loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
         />
-        <Box 
-          sx={{ 
-            position: 'absolute', top: 40, left: { xs: 20, md: 80 }, 
-            bgcolor: 'white', p: 3, borderRadius: '15px', 
-            boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-            maxWidth: '300px',
-            display: { xs: 'none', sm: 'block' }
-          }}
-        >
-           <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'var(--primary-green)', mb: 1 }}>BL Seeds Farm</Typography>
-           <Typography variant="body2" sx={{ color: 'var(--text-secondary)', mb: 2 }}>
-             123, Agricultural Road, Indore, <br />
-             Madhya Pradesh - 452001, India
-           </Typography>
-           <Button variant="text" size="small" sx={{ fontWeight: 800, p: 0, color: 'var(--primary-green)' }} endIcon={<ArrowForwardIcon sx={{ fontSize: '0.9rem' }} />}>
-             View on Google Maps
-           </Button>
-        </Box>
       </Box>
 
       {/* WHY CONNECT WITH US */}

@@ -8,6 +8,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import PageHero from '../components/common/PageHero';
 import { blogCategories as categories, blogPosts, popularPosts } from '../data/constants';
+import { CONTACT_DETAILS } from '../data/constants';
 
 export default function Blog() {
   return (
@@ -185,15 +186,15 @@ export default function Blog() {
                   <Stack spacing={2}>
                     <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
                       <PhoneIcon sx={{ color: 'var(--primary-green)', fontSize: '1.2rem' }} />
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>+91 98765 43210</Typography>
+                      <Typography variant="body2" sx={{ fontWeight: 700 }}>{CONTACT_DETAILS.phone}</Typography>
                     </Stack>
                     <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
                       <EmailIcon sx={{ color: 'var(--primary-green)', fontSize: '1.2rem' }} />
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>info@blseedsfarm.com</Typography>
+                      <Typography variant="body2" sx={{ fontWeight: 700 }}>{CONTACT_DETAILS.email}</Typography>
                     </Stack>
                     <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
                       <ScheduleIcon sx={{ color: 'var(--primary-green)', fontSize: '1.2rem' }} />
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>Mon - Sat: 9:00 AM - 6:00 PM</Typography>
+                      <Typography variant="body2" sx={{ fontWeight: 700 }}>{CONTACT_DETAILS.businessHours}</Typography>
                     </Stack>
                   </Stack>
                 </Box>
