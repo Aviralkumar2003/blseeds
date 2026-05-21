@@ -16,6 +16,7 @@ const quickLinks = [
   // { name: 'Products', path: '/products' },
   // { name: 'Gallery', path: '/gallery' },
   // { name: 'Blog', path: '/blog' },
+  { name: 'Contract Farming Program', path: '/dealer-enquiry' },
 ];
 
 const socialButtons = [
