@@ -1,12 +1,17 @@
-import { Box, Container, Typography, Button, Grid, Stack, Avatar } from '@mui/material';
+import { useState } from 'react';
+import { Box, Container, Typography, Button, Grid, Stack, Avatar, IconButton } from '@mui/material';
 import CallIcon from '@mui/icons-material/Call';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link as RouterLink } from 'react-router-dom';
 import SectionHeader from '../components/common/SectionHeader';
 import ProductCard from '../components/common/ProductCard';
 import { homeFeatures, homeStats, testimonials, allProducts } from '../data/constants';
+import founderPhoto from '../assets/Founding Members/Founder photo.jpg';
+import mdPhoto from '../assets/Founding Members/MD Photo.png';
 
 export default function Home() {
+  const [activeFounder, setActiveFounder] = useState(0);
   return (
     <Box>
       <Box
@@ -275,6 +280,187 @@ export default function Home() {
               </Grid>
             </Grid>
           </Grid>
+        </Container>
+      </Box>
+
+      {/* FROM THE FOUNDERS */}
+      <Box sx={{ py: 8, bgcolor: '#f7faf8' }}>
+        <Container maxWidth="xl">
+          {/* Section Header */}
+          <Box sx={{ textAlign: 'center', mb: 6 }}>
+            <Typography variant="overline" sx={{ color: 'var(--primary-green)', fontWeight: 800, letterSpacing: '0.15rem', fontSize: '0.85rem' }}>
+              OUR LEADERSHIP
+            </Typography>
+            <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.8rem' }, fontWeight: 900, mt: 1 }}>
+              From the{' '}
+              <span style={{ color: 'var(--primary-green)' }}>Founders</span>
+            </Typography>
+            <Box sx={{ width: 60, height: 4, bgcolor: 'var(--primary-green)', borderRadius: 2, mx: 'auto', mt: 2 }} />
+          </Box>
+
+          <Box sx={{ position: 'relative', px: { xs: 0, md: 6 } }}>
+            {/* Navigation Arrows */}
+            <IconButton
+              onClick={() => setActiveFounder((prev) => (prev === 0 ? 1 : 0))}
+              sx={{
+                position: 'absolute',
+                left: { xs: 0, md: -20 },
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 10,
+                bgcolor: 'white',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                '&:hover': { bgcolor: '#f0f4f0' },
+                display: { xs: 'none', sm: 'flex' }
+              }}
+            >
+              <ArrowBackIcon />
+            </IconButton>
+
+            <IconButton
+              onClick={() => setActiveFounder((prev) => (prev === 1 ? 0 : 1))}
+              sx={{
+                position: 'absolute',
+                right: { xs: 0, md: -20 },
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 10,
+                bgcolor: 'white',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                '&:hover': { bgcolor: '#f0f4f0' },
+                display: { xs: 'none', sm: 'flex' }
+              }}
+            >
+              <ArrowForwardIcon />
+            </IconButton>
+
+            <Box sx={{ display: 'grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr' }}>
+              {/* Founder 1 */}
+              <Box
+                sx={{
+                  gridColumn: 1,
+                  gridRow: 1,
+                  width: '100%',
+                  bgcolor: 'white',
+                  borderRadius: '24px',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.04)',
+                  border: '1px solid rgba(0,0,0,0.06)',
+                  display: 'flex',
+                  flexDirection: { xs: 'column-reverse', md: 'row' },
+                  overflow: 'hidden',
+                  position: 'relative',
+                  opacity: activeFounder === 0 ? 1 : 0,
+                  visibility: activeFounder === 0 ? 'visible' : 'hidden',
+                  transform: activeFounder === 0 ? 'scale(1)' : 'scale(0.98)',
+                  transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                  pointerEvents: activeFounder === 0 ? 'auto' : 'none',
+                }}
+              >
+                {/* Left side: text */}
+                <Box sx={{ flex: 1, p: { xs: 3, md: 4 }, display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+                  <Box sx={{ position: 'absolute', top: 0, left: 0, width: 5, bottom: 0, bgcolor: 'var(--primary-green)', display: { xs: 'none', md: 'block' } }} />
+                  <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, height: 5, bgcolor: 'var(--primary-green)', display: { xs: 'block', md: 'none' } }} />
+
+                  <Typography sx={{ fontSize: '3rem', lineHeight: 0.8, color: 'var(--primary-green)', opacity: 0.1, fontFamily: 'Georgia, serif', fontWeight: 900, mb: -1.5 }}>
+                    “
+                  </Typography>
+
+                  <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic', mb: 3, position: 'relative', zIndex: 1, maxHeight: '180px', overflowY: 'auto', pr: 2, '&::-webkit-scrollbar': { width: '4px' }, '&::-webkit-scrollbar-thumb': { bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '4px' } }}>
+                    "Dear Farmers & Valued Partners,<br />
+
+                    For the past 35 years, B.L. Seeds Farm has been dedicated to serving the farming community with commitment and integrity. Our journey has always been guided by one simple goal – to provide high-quality, reliable seeds that help farmers achieve better yields and success.<br />
+                    With decades of experience, hard work, and the trust of our farmers, we have grown steadily while staying true to our roots. We have embraced modern agricultural practices, yet we continue to uphold the traditional values that define us.<br />
+                    We strongly believe that a good seed is the foundation of a successful harvest. With this belief, we remain committed to supporting every farmer’s growth and prosperity.<br />
+                    Your trust and support are our greatest strengths, and we will continue to serve you with the same dedication in the years to come.<br />
+                    Thank you for being a part of our journey.
+                    "
+                  </Typography>
+
+                  <Box>
+                    <Typography variant="h5" sx={{ fontWeight: 900, color: 'var(--text-primary)', mb: 0.5 }}>
+                      Bharat Singh Pal
+                    </Typography>
+                    <Typography variant="subtitle1" sx={{ color: 'var(--primary-green)', fontWeight: 700, letterSpacing: '0.05rem' }}>
+                      Founder & Proprietor<br />
+                      B.L. Seeds Farm
+                    </Typography>
+                  </Box>
+                </Box>
+
+                {/* Right side: image */}
+                <Box sx={{ width: { xs: '100%', md: '45%', lg: '40%' }, minHeight: { xs: '250px', md: '100%' }, position: 'relative' }}>
+                  <Box component="img" src={founderPhoto} alt="Founder" sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                </Box>
+              </Box>
+
+              {/* MD / Co-Founder */}
+              <Box
+                sx={{
+                  gridColumn: 1,
+                  gridRow: 1,
+                  width: '100%',
+                  bgcolor: 'white',
+                  borderRadius: '24px',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.04)',
+                  border: '1px solid rgba(0,0,0,0.06)',
+                  display: 'flex',
+                  flexDirection: { xs: 'column-reverse', md: 'row' },
+                  overflow: 'hidden',
+                  position: 'relative',
+                  opacity: activeFounder === 1 ? 1 : 0,
+                  visibility: activeFounder === 1 ? 'visible' : 'hidden',
+                  transform: activeFounder === 1 ? 'scale(1)' : 'scale(0.98)',
+                  transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                  pointerEvents: activeFounder === 1 ? 'auto' : 'none',
+                }}
+              >
+                {/* Left side: text */}
+                <Box sx={{ flex: 1, p: { xs: 3, md: 4 }, display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+                  <Box sx={{ position: 'absolute', top: 0, left: 0, width: 5, bottom: 0, bgcolor: '#2e7d32', display: { xs: 'none', md: 'block' } }} />
+                  <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, height: 5, bgcolor: '#2e7d32', display: { xs: 'block', md: 'none' } }} />
+
+                  <Typography sx={{ fontSize: '3rem', lineHeight: 0.8, color: '#2e7d32', opacity: 0.1, fontFamily: 'Georgia, serif', fontWeight: 900, mb: -1.5 }}>
+                    “
+                  </Typography>
+
+                  <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic', mb: 3, position: 'relative', zIndex: 1, maxHeight: '180px', overflowY: 'auto', pr: 2, '&::-webkit-scrollbar': { width: '4px' }, '&::-webkit-scrollbar-thumb': { bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '4px' } }}>
+                    "Dear Farmers & Valued Partners,<br/>
+                    At B.L. Seeds Farm, we are committed to delivering excellence through high-quality seeds that ensure better productivity and sustainable growth. As a Managing Director, my vision is to combine traditional farming values with modern agricultural innovation.<br/>
+                    We specialize in premium green pea seeds, developed with care, research, and field experience to give you the best results. Our focus is not just on seeds, but on building long-term trust and success for every farmer associated with us.<br/>
+                    We believe that strong seeds create strong harvests, and strong relationships create a successful future. Your trust inspires us to continuously improve and serve you better.<br/>
+                    Thank you for being a part of our journey."
+                  </Typography>
+
+                  <Box>
+                    <Typography variant="h5" sx={{ fontWeight: 900, color: 'var(--text-primary)', mb: 0.5 }}>
+                      Om Baghel
+                    </Typography>
+                    <Typography variant="subtitle1" sx={{ color: '#2e7d32', fontWeight: 700, letterSpacing: '0.05rem' }}>
+                      Managing Director<br/>
+                      B.L. Seeds Farm
+                    </Typography>
+                  </Box>
+                </Box>
+
+                {/* Right side: image */}
+                <Box sx={{ width: { xs: '100%', md: '45%', lg: '40%' }, minHeight: { xs: '250px', md: '100%' }, position: 'relative' }}>
+                  <Box component="img" src={mdPhoto} alt="Managing Director" sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                </Box>
+              </Box>
+            </Box>
+
+            {/* Mobile Navigation Dots */}
+            <Stack direction="row" spacing={1} sx={{ justifyContent: 'center', mt: 4 }}>
+              <Box
+                onClick={() => setActiveFounder(0)}
+                sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: activeFounder === 0 ? 'var(--primary-green)' : '#e5e7eb', cursor: 'pointer', transition: 'background-color 0.3s' }}
+              />
+              <Box
+                onClick={() => setActiveFounder(1)}
+                sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: activeFounder === 1 ? '#2e7d32' : '#e5e7eb', cursor: 'pointer', transition: 'background-color 0.3s' }}
+              />
+            </Stack>
+          </Box>
         </Container>
       </Box>
 
