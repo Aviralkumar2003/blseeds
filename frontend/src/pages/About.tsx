@@ -49,22 +49,20 @@ export default function About() {
               />
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
-              <Typography variant="overline" sx={{ color: 'var(--primary-green)', fontWeight: 800, letterSpacing: '0.1rem' }}>
-                WHO WE ARE
+              <Typography variant="overline" sx={{ color: 'var(--primary-green)', fontWeight: 800, letterSpacing: '0.1rem', fontSize: '0.60rem' }}>
+                WHO ARE WE
               </Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 3, fontSize: '1.05rem' }}>
                 B.L. Seeds Farm is a well-established and trusted name in the seed industry, founded by
-                Mr. Bharat Singh Pal (Proprietor) in Kast, Jaswant Nagar, Etawah, Uttar Pradesh. With
-                over three decades of hands-on experience in agriculture and seed production, he has
+                Mr. Bharat Singh Pal (Proprietor) in Kaist, Jaswant Nagar, Etawah, Uttar Pradesh. With
+                over three decades of experience in agriculture and seed production, he has
                 built the company on a strong foundation of practical knowledge, farmer relationships,
                 and an unwavering focus on quality.
               </Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 4, fontSize: '1.05rem' }}>
                 At B.L. Seeds Farm, our mission is to provide farmers with seeds that consistently
-
                 deliver strong performance in the field. We focus on developing and supplying high-
                 quality seeds that support better yields, healthy crop growth, and reliable results
-
                 across different farming conditions.
               </Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 4, fontSize: '1.05rem' }}>
@@ -73,13 +71,6 @@ export default function About() {
                 and germination. Each seed batch goes through strict quality checks to ensure it meets
                 the expectations of modern farming.
               </Typography>
-
-              <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 4, fontSize: '1.05rem' }}>
-                Driven by experience and guided by farmer trust, B.L. Seeds Farm continues to work
-                towards improving agricultural productivity by offering dependable seeds that farmers
-                can rely on season after season.
-              </Typography>
-
 
               <Box sx={{ mt: 4 }}>
                 <Typography sx={{ fontFamily: 'cursive', fontSize: '1.5rem', color: 'var(--text-primary)' }}>
