@@ -49,7 +49,7 @@ export default function About() {
               />
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
-              <Typography variant="overline" sx={{ color: 'var(--primary-green)', fontWeight: 800, letterSpacing: '0.1rem', fontSize: '0.60rem' }}>
+              <Typography variant="overline" sx={{ color: 'var(--primary-green)', fontWeight: 800, letterSpacing: '0.1rem', fontSize: '2.0rem' }}>
                 WHO ARE WE
               </Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 3, fontSize: '1.05rem' }}>
