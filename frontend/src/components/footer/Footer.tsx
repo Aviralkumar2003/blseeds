@@ -36,7 +36,7 @@ export default function Footer() {
               BLSEEDS
             </Typography>
             <Typography variant="body2" sx={{ color: 'grey.500', mb: 4, lineHeight: 1.8, maxWidth: '90%' }}>
-              At B.L. Seeds Farm, quality is not a benchmark—it is a philosophy embedded in every decision, every process, and every seed we produce.
+              At B.L. Seeds Farm, quality is not a benchmark—it is a philosophy embedded in every decision, every process, and every seed we produce. With deep expertise in premium green peas seeds, we are committed to delivering superior genetics, high germination standards, and consistent field performance that farmers can trust.
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
               {socialButtons.map(({ Icon, url }, index) => (
