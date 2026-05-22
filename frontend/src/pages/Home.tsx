@@ -57,7 +57,7 @@ export default function Home() {
                   best quality seeds for every kind of crop.
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-                  {/* <Button
+                  <Button
                     variant="contained"
                     endIcon={<ArrowForwardIcon />}
                     sx={{
@@ -66,9 +66,11 @@ export default function Home() {
                       fontSize: '0.9rem',
                       fontWeight: 800
                     }}
+                    component={RouterLink}
+                    to="/products"
                   >
                     EXPLORE PRODUCTS
-                  </Button> */}
+                  </Button>
                   <Button
                     variant="outlined"
                     startIcon={<CallIcon />}
@@ -385,8 +387,8 @@ export default function Home() {
                 </Box>
 
                 {/* Right side: image */}
-                <Box sx={{ width: { xs: '100%', md: '45%', lg: '40%' }, minHeight: { xs: '250px', md: '100%' }, position: 'relative' }}>
-                  <Box component="img" src={founderPhoto} alt="Founder" sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                <Box sx={{ width: { xs: '100%', md: '45%', lg: '40%' }, minHeight: { xs: '300px', md: '100%' }, position: 'relative', bgcolor: '#f4f7f4' }}>
+                  <Box component="img" src={founderPhoto} alt="Founder" sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: { xs: 'contain', md: 'cover' }, objectPosition: 'top center', p: { xs: 2, md: 0 } }} />
                 </Box>
               </Box>
 
@@ -440,8 +442,8 @@ export default function Home() {
                 </Box>
 
                 {/* Right side: image */}
-                <Box sx={{ width: { xs: '100%', md: '45%', lg: '40%' }, minHeight: { xs: '250px', md: '100%' }, position: 'relative' }}>
-                  <Box component="img" src={mdPhoto} alt="Managing Director" sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                <Box sx={{ width: { xs: '100%', md: '45%', lg: '40%' }, minHeight: { xs: '300px', md: '100%' }, position: 'relative', bgcolor: '#f4f7f4' }}>
+                  <Box component="img" src={mdPhoto} alt="Managing Director" sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: { xs: 'contain', md: 'cover' }, objectPosition: 'top center', p: { xs: 2, md: 0 } }} />
                 </Box>
               </Box>
             </Box>

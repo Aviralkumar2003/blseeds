@@ -18,7 +18,7 @@ import { CONTACT_DETAILS } from '../../data/constants';
 const pages = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
-  // { name: 'Products', path: '/products' },
+  { name: 'Products', path: '/products' },
   // { name: 'Gallery', path: '/gallery' },
   // { name: 'Blog', path: '/blog' },
   { name: 'Contact', path: '/contact' },
@@ -104,7 +104,7 @@ export default function Navbar() {
                 src={Logo}
                 alt="BL Seeds Logo"
                 sx={{
-                  height: { xs: isScrolled ? '40px' : '56px', md: isScrolled ? '48px' : '64px' },
+                  height: { xs: isScrolled ? '40px' : '58px', md: isScrolled ? '68px' : '80px' },
                   width: 'auto',
                   transition: 'height 0.4s cubic-bezier(0.23, 1, 0.320, 1)',
                   objectFit: 'contain',
