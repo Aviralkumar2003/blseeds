@@ -18,6 +18,15 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import ArharSeeds from '../assets/Products/Arhar Seeds.png'
+import BlackUradSeedT9 from '../assets/Products/Black Urad Seed - T9.png'
+import HaraUrad from '../assets/Products/Hara Urad.png'
+import MoongSeedPDM139 from '../assets/Products/Moong Seed - PDM 139.png'
+import PalakSeeds from '../assets/Products/Palak seeds.png'
+import PeaSeeds from '../assets/Products/Pea Seeds.png'
+import UradSeedShekhar2 from '../assets/Products/Urad Seed Shekhar 2.png'
+import WheatSeeds from '../assets/Products/Wheat Seeds.png'
+import PeaSeedsBL11 from '../assets/Products/PeaSeedsBL11.png'
 
 // ==========================================
 // ✅ CENTRAL CONTACT DETAILS — Edit here to update everywhere
@@ -88,22 +97,250 @@ export const aboutJourney = [
 // PRODUCTS PAGE DATA
 // ==========================================
 export const productCategories = [
-  "All Products", "Wheat Seeds", "Mustard Seeds", "Paddy Seeds", 
+  "All Products", "Wheat Seeds", "Mustard Seeds", "Paddy Seeds",
   "Vegetable Seeds", "Hybrid Seeds", "Fodder Seeds", "Flower Seeds", "Other Seeds"
 ];
 
-export const allProducts = [
-  { name: "Wheat Seeds", desc: "High germination wheat seeds for better yield and quality.", img: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=1974&auto=format&fit=crop" },
-  { name: "Mustard Seeds", desc: "Premium quality mustard seeds for higher production.", img: "https://images.unsplash.com/photo-1628543102308-9a4c1a39ef81?q=80&w=2070&auto=format&fit=crop" },
-  { name: "Paddy Seeds", desc: "High quality paddy seeds with excellent germination.", img: "https://images.unsplash.com/photo-1536630596251-b01c6253926b?q=80&w=2070&auto=format&fit=crop" },
-  { name: "Vegetable Seeds", desc: "Wide range of vegetable seeds for healthy crops.", img: "https://images.unsplash.com/photo-1592419044706-39796d40f98c?q=80&w=1950&auto=format&fit=crop" },
-  { name: "Hybrid Seeds", desc: "Advanced hybrid seeds for maximum productivity.", img: "https://images.unsplash.com/photo-1594759828453-2795856104c2?q=80&w=2032&auto=format&fit=crop" },
-  { name: "Fodder Seeds", desc: "Nutritious fodder seeds for healthy livestock.", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop" },
-  { name: "Cotton Seeds", desc: "Best quality cotton seeds for higher boll count.", img: "https://images.unsplash.com/photo-1594913785162-e678ac0570da?q=80&w=2069&auto=format&fit=crop" },
-  { name: "Sunflower Seeds", desc: "High oil content sunflower seeds for better returns.", img: "https://images.unsplash.com/photo-1597022202222-2960dcd470c4?q=80&w=2070&auto=format&fit=crop" },
-  { name: "Maize Seeds", desc: "High yielding maize seeds for all types of soil.", img: "https://images.unsplash.com/photo-1551749005-6694075f284b?q=80&w=2070&auto=format&fit=crop" },
-  { name: "Flower Seeds", desc: "Beautiful and healthy flowers for every season.", img: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2070&auto=format&fit=crop" },
-];
+export type CropDetailValue = string | string[] | { kharif?: string; summer?: string };
+
+export interface CropDetails {
+  [key: string]: CropDetailValue;
+}
+
+export interface CropDescription {
+  name: string;
+  category: string;
+  img: any;
+  shortDescription: string;
+  details: CropDetails;
+}
+
+export const cropDescriptions: Record<string, CropDescription> = {
+  "Pea Seeds": {
+    name: "AP-3 Certified Pea Seed Variety",
+    category: "Certified Pea Seed",
+    img: PeaSeeds,
+    shortDescription:
+      "AP-3 Certified Pea Seed is a high-performing variety known for uniform pods, quality green seeds, early maturity, and reliable yields. Ideal for fresh vegetable cultivation and dry seed production in North Indian conditions.",
+    details: {
+      maturityDuration: "70–75 days after sowing",
+      plantGrowth:
+        "Semi-spreading to semi-erect plants with an average height of 45–60 cm.",
+      podQuality:
+        "Smooth, elongated, cylindrical pods containing 6–8 well-filled seeds.",
+      seedAppearance:
+        "Round, green, and uniform-sized seeds suitable for market and processing.",
+      yieldCapacity:
+        "Produces good quality yield under proper crop management.",
+      sowingTime:
+        "Best suited for Rabi cultivation during October–November.",
+      diseaseTolerance:
+        "Shows good tolerance against powdery mildew and downy mildew.",
+      advantages: [
+        "Suitable for fresh vegetable use and dry seed production",
+        "Performs well in North Indian plains",
+        "Preferred for uniform pod quality and better market value",
+      ],
+      packingSizes: ["5 Kg", "10 Kg", "40 Kg"],
+    },
+  },
+
+  "Arhar Seeds": {
+    name: "Arhar Seeds",
+    category: "Seed Variety",
+    img: ArharSeeds,
+    shortDescription:
+      "A high-yielding late-duration variety with strong wilt resistance and vigorous plant growth. Well-suited for Kharif cultivation in North Indian plains.",
+    details: {
+      maturityDuration: "250–260 days",
+      sowingSeason: "Kharif season, preferably around July",
+      yieldPotential: "Excellent yield capacity under favorable conditions",
+      plantGrowth:
+        "Tall and vigorous plants reaching 2–3 meters in height.",
+      seedCharacteristics:
+        "Yellow-brown medium-sized seeds with good market appeal.",
+      diseaseTolerance: "Strong resistance to wilt disease.",
+      adaptability:
+        "Suitable for plains of North India including Uttar Pradesh and Bihar.",
+      croppingFlexibility:
+        "Suitable for intercropping and mixed cropping systems.",
+    },
+  },
+
+  "B.L-11 Pea Seeds": {
+    name: "B.L.-11 Certified Pea Seed Variety",
+    category: "Pea Seed",
+    img: PeaSeedsBL11,
+    shortDescription:
+      "B.L.-11 is a high-yielding mid-duration pea variety known for its long dark green pods, sweet tender seeds, and strong plant growth.",
+    details: {
+      cropDuration: "85–90 days after sowing",
+      plantGrowth:
+        "Healthy vigorous plants with 65–75 cm vine length and dense dark green foliage.",
+      podFormation: "Typically develops 2 pods per node.",
+      podAppearance:
+        "Long, smooth, attractive dark green pods measuring 10–12 cm.",
+      seedQuality:
+        "Each pod contains 9–12 soft and sweet green seeds.",
+      productionCapacity:
+        "Known for excellent yield performance in commercial cultivation.",
+      diseaseTolerance:
+        "Good tolerance against powdery mildew and changing weather conditions.",
+      marketSuitability:
+        "Suitable for fresh vegetable markets and processing industries.",
+    },
+  },
+
+  "Black Urad Seed – T9": {
+    name: "T9 Black Gram Variety",
+    category: "Black Gram Seed",
+    img: BlackUradSeedT9,
+    shortDescription:
+      "T9 is an early maturing black gram variety trusted for its reliable yield, uniform seed quality, and strong adaptability.",
+    details: {
+      maturityDuration: "70–75 days",
+      plantType:
+        "Medium-height plants with semi-erect growth habit.",
+      seedCharacteristics:
+        "Small to medium-sized light black to dull black seeds.",
+      podCharacteristics:
+        "Each pod generally contains 10–12 seeds.",
+      yieldPotential:
+        "Provides reliable and satisfactory yield under proper cultivation.",
+      sowingTime: "Kharif season (June–July)",
+      suitableAreas:
+        "Well adapted to Uttar Pradesh, Madhya Pradesh, and North Indian regions.",
+      specialFeature:
+        "One of the earliest and widely trusted improved black gram varieties in India.",
+    },
+  },
+
+  "Hara Urad": {
+    name: "Hara Urad",
+    category: "Urad Seed",
+    img: HaraUrad,
+    shortDescription:
+      "Hara Urad is an early to medium duration variety known for its green shiny seeds, strong branching, and dependable yield performance.",
+    details: {
+      maturityDuration: "75–80 days",
+      plantType:
+        "Medium-height semi-erect plants with good branching.",
+      seedCharacteristics:
+        "Medium-sized shiny green seeds.",
+      podCharacteristics:
+        "Medium-length pods containing 6–8 seeds.",
+      yieldPotential:
+        "Produces reliable yield under good farming practices.",
+      diseaseResistance:
+        "Shows tolerance against Yellow Mosaic Virus (YMV) and leaf diseases.",
+      sowingTime: { kharif: "June–July", summer: "March–April" },
+      suitableRegions:
+        "Suitable for Uttar Pradesh, Haryana, Delhi, and nearby North Indian regions.",
+    },
+  },
+
+  "Moong Seed (PDM-139)": {
+    name: "Moong Seed (PDM-139)",
+    category: "Moong Seed",
+    img: MoongSeedPDM139,
+    shortDescription:
+      "PDM-139 is a fast-growing moong seed variety known for its bold green seeds, early maturity, and reliable yield performance.",
+    details: {
+      maturityDuration: "60–65 days",
+      plantStructure:
+        "Semi-erect bushy plants with average height of 40–50 cm.",
+      podDetails:
+        "Medium-length pods (6–7 cm) containing 9–10 well-filled seeds.",
+      seedQuality:
+        "Bold, glossy, bright green seeds with strong market appeal.",
+      sowingPeriod: { kharif: "June–July", summer: "March–April" },
+      diseaseTolerance:
+        "Strong tolerance against YMV and powdery mildew.",
+      additionalBenefits: [
+        "Suitable for crop rotation",
+        "Suitable for intercropping systems",
+        "Performs best in well-drained sandy loam soils",
+      ],
+    },
+  },
+
+  "Palak Seeds": {
+    name: "Palak Seeds (All Green Variety)",
+    category: "Palak Seed",
+    img: PalakSeeds,
+    shortDescription:
+      "All Green Palak is a fast-growing spinach variety known for its lush deep green leaves, quick harvest, and multiple cutting potential.",
+    details: {
+      cropDuration: "25–30 days",
+      plantGrowthHabit:
+        "Erect to semi-spreading plants with thick leafy cover.",
+      leafQuality:
+        "Deep green, soft, smooth leaves of medium to large size.",
+      seedFeatures:
+        "Small rounded light brown seeds with excellent germination.",
+      sowingTime:
+        "Can be cultivated year-round; best performance from October to March.",
+      diseaseTolerance:
+        "Good tolerance against downy mildew and leaf spot.",
+      advantages: [
+        "Ideal for multiple harvests",
+        "Produces lush green leaves",
+        "Suitable for open field and protected farming",
+        "Ensures consistent yield",
+      ],
+    },
+  },
+
+  "Urad Seed – Shekhar-2 (Bhura)": {
+    name: "Urad Seed – Shekhar-2 (Bhura)",
+    category: "Urad Seed",
+    img: UradSeedShekhar2,
+    shortDescription:
+      "Shekhar-2 (Bhura) is a quick-maturing urad variety valued for its uniform seeds, stable yield, and strong disease tolerance.",
+    details: {
+      maturityDuration: "70–80 days",
+      plantProfile:
+        "Medium-height plants with broad leaves and balanced branching.",
+      seedFeatures:
+        "Green to dull-green medium-sized seeds with good uniformity.",
+      podDetails:
+        "Brownish slightly hairy medium-length pods.",
+      yieldPerformance:
+        "Provides stable and satisfactory yield under proper cultivation.",
+      diseaseTolerance:
+        "Good resistance against Yellow Mosaic Virus (YMV) and leaf diseases.",
+      growingSeason: ["Kharif", "Zaid (Summer)"],
+      recommendedAreas:
+        "Suitable for cultivation across North Indian regions including Punjab.",
+    },
+  },
+
+  "Wheat Seeds (Sarpanch 303)": {
+    name: "Wheat Seed Variety - Sarpanch 303",
+    category: "Wheat Seed",
+    img: WheatSeeds,
+    shortDescription:
+      "Sarpanch 303 is a high-yielding wheat seed variety known for strong plant growth, bold grain quality, and reliable field performance.",
+    details: {
+      cropDuration: "115–130 days",
+      plantGrowth:
+        "Strong and uniform growth with healthy tillering and sturdy stems.",
+      grainFormation:
+        "Produces well-filled and uniform grains with excellent grain setting.",
+      grainAppearance:
+        "Bold, bright, attractive grains with good shine.",
+      seedQuality:
+        "High germination percentage with strong root establishment.",
+      productionCapacity:
+        "High yield potential and dependable field performance.",
+      diseaseTolerance:
+        "Better tolerance against common wheat diseases.",
+      marketSuitability:
+        "Suitable for commercial cultivation and grain markets.",
+    },
+  },
+};
+
 
 // ==========================================
 // CONTACT PAGE DATA
