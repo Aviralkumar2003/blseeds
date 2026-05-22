@@ -23,7 +23,7 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 // ✅ CENTRAL CONTACT DETAILS — Edit here to update everywhere
 // ==========================================
 export const CONTACT_DETAILS = {
-  phone: '+91 8449050067',
+  phone: '+91 8449050067/+91 7017999052',
   phoneHref: 'tel:+918449050067',
   email: 'info.blseedsfarm@gmail.com',
   emailHref: 'mailto:info.blseedsfarm@gmail.com',
