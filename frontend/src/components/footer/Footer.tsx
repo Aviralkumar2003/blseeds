@@ -11,12 +11,10 @@ import { CONTACT_DETAILS } from '../../data/constants';
 
 const quickLinks = [
   { name: 'Home', path: '/' },
-  { name: 'About Us', path: '/about' },
-  { name: 'Contact Us', path: '/contact' },
   { name: 'Products', path: '/products' },
-  // { name: 'Gallery', path: '/gallery' },
-  // { name: 'Blog', path: '/blog' },
   { name: 'Contract Farming Program', path: '/dealer-enquiry' },
+  { name: 'About Us', path: '/about' },
+  { name: 'Contact', path: '/contact' }
 ];
 
 const socialButtons = [

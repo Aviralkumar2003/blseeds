@@ -17,12 +17,12 @@ import { CONTACT_DETAILS } from '../../data/constants';
 
 const pages = [
   { name: 'Home', path: '/' },
-  { name: 'About Us', path: '/about' },
   { name: 'Products', path: '/products' },
+  { name: 'Contract Farming Program', path: '/dealer-enquiry' },
+  { name: 'About Us', path: '/about' },
+  { name: 'Contact', path: '/contact' }
   // { name: 'Gallery', path: '/gallery' },
   // { name: 'Blog', path: '/blog' },
-  { name: 'Contact', path: '/contact' },
-  { name: 'Contract Farming Program', path: '/dealer-enquiry' }
 ];
 
 const primaryGreen = '#0b5d1e';

@@ -27,6 +27,7 @@ import PeaSeeds from '../assets/Products/Pea Seeds.png'
 import UradSeedShekhar2 from '../assets/Products/Urad Seed Shekhar 2.png'
 import WheatSeeds from '../assets/Products/Wheat Seeds.png'
 import PeaSeedsBL11 from '../assets/Products/PeaSeedsBL11.png'
+import KarishmaPea from '../assets/Products/Karishma Pea.png'
 
 // ==========================================
 // ✅ CENTRAL CONTACT DETAILS — Edit here to update everywhere
@@ -339,6 +340,39 @@ export const cropDescriptions: Record<string, CropDescription> = {
         "Suitable for commercial cultivation and grain markets.",
     },
   },
+  "Karishma Pea": {
+    name: "Peas Seed Variety – Karishma",
+    category: "Peas Seed",
+    img: KarishmaPea,
+    shortDescription:
+      "Karishma is a high-yielding pea seed variety known for its attractive green pods, vigorous plant growth, and reliable field performance. Ideal for commercial cultivation and fresh vegetable markets.",
+
+    details: {
+      cropDuration:
+        "65–75 days after sowing, depending on climate and field management practices.",
+
+      plantGrowth:
+        "Healthy and vigorous plants with strong branching and balanced structure for better pod development.",
+
+      podFormation:
+        "Produces long, tender, and well-filled pods with excellent pod setting ability.",
+
+      podAppearance:
+        "Pods are attractive, uniform, and bright green in color, suitable for fresh vegetable markets.",
+
+      seedQuality:
+        "Seeds offer good germination percentage and support strong root establishment.",
+
+      productionCapacity:
+        "Known for high yield potential and continuous pod picking ability under suitable cultivation conditions.",
+
+      diseaseTolerance:
+        "Shows good adaptability and tolerance against common pea diseases and changing weather conditions.",
+
+      marketSuitability:
+        "Highly suitable for commercial cultivation due to uniform pod quality, attractive appearance, and strong productivity.",
+    },
+  }
 };
 
 

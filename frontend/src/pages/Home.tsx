@@ -4,16 +4,32 @@ import CallIcon from '@mui/icons-material/Call';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link as RouterLink } from 'react-router-dom';
-import { homeFeatures } from '../data/constants';
+
+// Icons for Hero Product details
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import GrassIcon from '@mui/icons-material/Grass';
+import StarsIcon from '@mui/icons-material/Stars';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import ShieldIcon from '@mui/icons-material/Shield';
+import InfoIcon from '@mui/icons-material/Info';
+
+// Custom components & constants
+import SectionHeader from '../components/common/SectionHeader';
+import ProductDetailModal from '../components/common/ProductDetailModal';
+import { homeFeatures, cropDescriptions } from '../data/constants';
+
 import founderPhoto from '../assets/Founding Members/Founder photo.jpg';
 import mdPhoto from '../assets/Founding Members/MD Photo.png';
-import greanPeasFarm from '../assets/Farm/Green Peas Farm.png'
-import PeaImage1 from '../assets/Products/PeaImage1.png'
-import PeaImage2 from '../assets/Products/PeaImage2.png'
-import PeaImage3 from '../assets/Products/PeaImage3.png'
+import greanPeasFarm from '../assets/Farm/Green Peas Farm.png';
+import PeaImage1 from '../assets/Products/PeaImage1.png';
+import PeaImage2 from '../assets/Products/PeaImage2.png';
+import PeaImage3 from '../assets/Products/PeaImage3.png';
 
 export default function Home() {
   const [activeFounder, setActiveFounder] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const heroProduct = cropDescriptions["B.L-11 Pea Seeds"];
   return (
     <Box>
       <Box
@@ -173,20 +189,177 @@ export default function Home() {
         </Container>
       </Box>
 
-      {/* OUR TOP PRODUCTS */}
-      {/* <Box sx={{ py: 12, bgcolor: '#fbfcfb' }}>
+      {/* OUR HERO PRODUCT */}
+      <Box sx={{ py: 8, bgcolor: '#fbfcfb' }}>
         <Container maxWidth="xl">
-          <SectionHeader title="Our Top" highlight="Products" />
+          <SectionHeader title="Our Hero" highlight="Product" />
 
-          <Grid container spacing={4}>
-            {allProducts.slice(0, 5).map((product, index) => (
-              <Grid size={{ xs: 12, sm: 6, md: 2.4 }} key={index}>
-                <ProductCard product={product} variant="home" />
-              </Grid>
-            ))}
-          </Grid>
+          <Box
+            sx={{
+              width: '100%',
+              bgcolor: 'white',
+              borderRadius: '24px',
+              boxShadow: '0 10px 40px rgba(0,0,0,0.04)',
+              border: '1px solid rgba(0,0,0,0.06)',
+              display: 'flex',
+              flexDirection: { xs: 'column-reverse', md: 'row' },
+              overflow: 'hidden',
+              position: 'relative',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 15px 45px rgba(0,0,0,0.08)',
+              }
+            }}
+          >
+            {/* Left side: text */}
+            <Box sx={{ flex: 1, p: { xs: 3, md: 4.5 }, display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+              <Box sx={{ position: 'absolute', top: 0, left: 0, width: 5, bottom: 0, bgcolor: 'var(--primary-green)', display: { xs: 'none', md: 'block' } }} />
+              <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, height: 5, bgcolor: 'var(--primary-green)', display: { xs: 'block', md: 'none' } }} />
+
+              {/* Gold Signature Badge */}
+              <Box
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 0.5,
+                  bgcolor: 'var(--accent-gold)',
+                  color: '#0a2815',
+                  px: 2,
+                  py: 0.6,
+                  borderRadius: '50px',
+                  fontWeight: 800,
+                  fontSize: '0.72rem',
+                  letterSpacing: '0.05rem',
+                  mb: 1.8,
+                  alignSelf: 'flex-start',
+                  boxShadow: '0 4px 10px rgba(230, 179, 37, 0.15)',
+                }}
+              >
+                ★ SIGNATURE VARIETY
+              </Box>
+
+              <Typography
+                variant="overline"
+                sx={{
+                  color: 'var(--primary-green)',
+                  fontWeight: 800,
+                  letterSpacing: '0.15rem',
+                  fontSize: '0.8rem',
+                  mb: 0.8,
+                  display: 'block'
+                }}
+              >
+                OUR HERO PRODUCT
+              </Typography>
+
+              <Typography
+                variant="h3"
+                sx={{
+                  fontSize: { xs: '2rem', md: '2.5rem' },
+                  lineHeight: 1.2,
+                  mb: 1.8,
+                  color: '#0a2815',
+                  fontWeight: 900
+                }}
+              >
+                B.L.-11 Certified <br />
+                <span style={{ color: 'var(--primary-green)' }}>Pea Seed Variety</span>
+              </Typography>
+
+              <Typography
+                variant="body1"
+                sx={{
+                  fontSize: '1.05rem',
+                  mb: 2.5,
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.7,
+                  fontWeight: 500
+                }}
+              >
+                B.L.-11 is our premier, high-yielding mid-duration pea variety, trusted by thousands of farmers. 
+                Known for its exceptionally long (10–12 cm) dark green pods and sweet, tender green seeds, 
+                this certified variety combines vigorous plant growth with excellent disease tolerance to deliver 
+                reliable yields and premium market value.
+              </Typography>
+
+              {/* Primary CTA Buttons */}
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+                <Button
+                  variant="contained"
+                  onClick={() => setIsModalOpen(true)}
+                  sx={{
+                    bgcolor: 'var(--primary-green)',
+                    color: 'white',
+                    fontWeight: 800,
+                    px: 3,
+                    py: 1.2,
+                    borderRadius: '8px',
+                    boxShadow: '0 8px 24px rgba(11, 93, 30, 0.15)',
+                    '&:hover': {
+                      bgcolor: '#084516',
+                      boxShadow: '0 12px 30px rgba(11, 93, 30, 0.25)',
+                    }
+                  }}
+                >
+                  VIEW FULL SPECIFICATIONS
+                </Button>
+                <Button
+                  component={RouterLink}
+                  to="/contact"
+                  variant="outlined"
+                  sx={{
+                    bgcolor: 'white',
+                    borderColor: 'var(--primary-green)',
+                    color: 'var(--primary-green)',
+                    fontWeight: 800,
+                    px: 3,
+                    py: 1.2,
+                    borderRadius: '8px',
+                    borderWidth: '2px',
+                    '&:hover': {
+                      borderColor: '#084516',
+                      bgcolor: '#f0f7f2',
+                      borderWidth: '2px',
+                    }
+                  }}
+                >
+                  ENQUIRE NOW
+                </Button>
+              </Stack>
+            </Box>
+
+            {/* Right side: image container taking the entirety of the container */}
+            <Box
+              sx={{
+                width: { xs: '100%', md: '40%', lg: '35%' },
+                minHeight: { xs: '195px', md: '100%' },
+                position: 'relative',
+                bgcolor: '#f0f7f2',
+                overflow: 'hidden',
+              }}
+            >
+              <Box
+                component="img"
+                src={heroProduct.img}
+                alt={heroProduct.name}
+                sx={{
+                  position: { md: 'absolute' },
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transition: 'transform 0.4s ease',
+                  '&:hover': {
+                    transform: 'scale(1.03)',
+                  }
+                }}
+              />
+            </Box>
+          </Box>
         </Container>
-      </Box> */}
+      </Box>
 
       {/* STATS SECTION */}
       {/* <Box sx={{ py: 5, color: 'white', position: 'relative', overflow: 'hidden' }}>
@@ -554,6 +727,15 @@ export default function Home() {
           sx={{ width: 60, height: 60 }}
         />
       </Box> */}
+
+      {/* PRODUCT DETAIL MODAL FOR HERO PRODUCT */}
+      <ProductDetailModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        productName={heroProduct.name}
+        productImg={heroProduct.img}
+        cropData={heroProduct}
+      />
     </Box>
   );
 }
