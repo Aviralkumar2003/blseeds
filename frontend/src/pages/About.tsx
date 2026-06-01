@@ -6,14 +6,16 @@ import QualityTesting from '../assets/Quality Standards/Testing.png';
 import Storage from '../assets/Quality Standards/Storage Facility.png';
 import Processing from '../assets/Quality Standards/Factory.png';
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function About() {
+  const { t } = useTranslation();
   return (
     <Box>
       <PageHero
-        title="ABOUT US"
-        breadcrumbs={['Home', 'About Us']}
-        description="At B.L. Seeds Farm, quality is not a benchmark—it is a philosophy embedded in every decision, every process, and every seed we produce."
+        title={t('about.page_hero_title')}
+        breadcrumbs={[t('navbar.home'), t('about.page_hero_title')]}
+        description={t('about.page_hero_desc')}
         bgColor="#f9f7f2"
         bgImage="https://t3.ftcdn.net/jpg/03/48/58/60/360_F_348586063_Qet050UULnm7C4IR4kzhnzUrcvQt7SQN.jpg"
         darkTheme={true}
@@ -50,37 +52,27 @@ export default function About() {
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
               <Typography variant="overline" sx={{ color: 'var(--primary-green)', fontWeight: 800, letterSpacing: '0.1rem', fontSize: '2.0rem' }}>
-                WHO ARE WE
+                {t('about.who_we_are_title')}
               </Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 3, fontSize: '1.05rem' }}>
-                B.L. Seeds Farm is a well-established and trusted name in the seed industry, founded by
-                Mr. Bharat Singh Pal (Proprietor) in Kaist, Jaswant Nagar, Etawah, Uttar Pradesh. With
-                over three decades of experience in agriculture and seed production, he has
-                built the company on a strong foundation of practical knowledge, farmer relationships,
-                and an unwavering focus on quality.
+                {t('about.who_we_are_p1')}
               </Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 4, fontSize: '1.05rem' }}>
-                At B.L. Seeds Farm, our mission is to provide farmers with seeds that consistently
-                deliver strong performance in the field. We focus on developing and supplying high-
-                quality seeds that support better yields, healthy crop growth, and reliable results
-                across different farming conditions.
+                {t('about.who_we_are_p2')}
               </Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 4, fontSize: '1.05rem' }}>
-                Our product portfolio includes premium vegetable seeds along with certified pulse and
-                grain seeds, all carefully selected and processed to maintain high standards of purity
-                and germination. Each seed batch goes through strict quality checks to ensure it meets
-                the expectations of modern farming.
+                {t('about.who_we_are_p3')}
               </Typography>
 
               <Box sx={{ mt: 4 }}>
                 <Typography sx={{ fontFamily: 'cursive', fontSize: '1.5rem', color: 'var(--text-primary)' }}>
-                  Mr. Bharat Singh Pal
+                  {t('about.founder_name')}
                 </Typography>
                 <Typography variant="subtitle2" sx={{ fontWeight: 700, mt: 0.5 }}>
-                  (Founder)
+                  {t('about.founder_title')}
                 </Typography>
                 <Typography variant="caption" sx={{ color: 'var(--primary-green)', fontWeight: 800 }}>
-                  B.L Seeds Farm
+                  {t('about.founder_company')}
                 </Typography>
               </Box>
             </Grid>
@@ -183,16 +175,16 @@ export default function About() {
           <Grid container spacing={8}>
             <Grid size={{ xs: 12, md: 5 }}>
               <Typography variant="h2" sx={{ fontSize: '2.5rem', mb: 4, fontWeight: 700, color: 'var(--accent-gold)' }}>
-                WHY CHOOSE B.L SEEDS FARM?
+                {t('about.why_choose_title')}
               </Typography>
               <List sx={{ mb: 4 }}>
                 {[
-                  "High Germination & Purity",
-                  "Disease Resistant Seeds",
-                  "Scientifically Tested",
-                  "Wide Range of Quality Seeds",
-                  "Timely Delivery",
-                  "Dedicated Support to Farmers"
+                  t('about.why_choose_list_1'),
+                  t('about.why_choose_list_2'),
+                  t('about.why_choose_list_3'),
+                  t('about.why_choose_list_4'),
+                  t('about.why_choose_list_5'),
+                  t('about.why_choose_list_6')
                 ].map((item, index) => (
                   <ListItem key={index} disableGutters sx={{ py: 1.5 }}>
                     <ListItemIcon sx={{ minWidth: 40, color: 'var(--accent-gold)' }}>
@@ -226,7 +218,7 @@ export default function About() {
                         bgcolor: 'rgba(11, 93, 30, 0.8)', p: 1.5, textAlign: 'center'
                       }}
                     >
-                      <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'var(--accent-gold)' }}>Quality Testing</Typography>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'var(--accent-gold)' }}>{t('about.quality_testing')}</Typography>
                     </Box>
                   </Box>
                 </Grid>
@@ -250,7 +242,7 @@ export default function About() {
                         bgcolor: 'rgba(11, 93, 30, 0.8)', p: 1.5, textAlign: 'center'
                       }}
                     >
-                      <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'var(--accent-gold)' }}>Advanced Processing</Typography>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'var(--accent-gold)' }}>{t('about.advanced_processing')}</Typography>
                     </Box>
                   </Box>
                 </Grid>
@@ -274,7 +266,7 @@ export default function About() {
                         bgcolor: 'rgba(11, 93, 30, 0.8)', p: 1.5, textAlign: 'center'
                       }}
                     >
-                      <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'var(--accent-gold)' }}>Safe & Hygienic Storage</Typography>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'var(--accent-gold)' }}>{t('about.safe_hygienic_storage')}</Typography>
                     </Box>
                   </Box>
                 </Grid>
@@ -317,10 +309,10 @@ export default function About() {
           >
             <Box>
               <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
-                Let's Grow Together for a Better Tomorrow
+                {t('about.bottom_cta_title')}
               </Typography>
               <Typography variant="body1" sx={{ opacity: 0.9, fontSize: '1.1rem', color: 'white' }}>
-                We are always here to support our farmers.
+                {t('about.bottom_cta_desc')}
               </Typography>
             </Box>
             <Button
@@ -336,7 +328,7 @@ export default function About() {
               component={RouterLink}
               to="/contact"
             >
-              CONTACT US
+              {t('about.bottom_cta_btn')}
             </Button>
           </Stack>
         </Container>

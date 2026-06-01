@@ -15,6 +15,7 @@ import {
   alpha
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // Material Icons
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -44,14 +45,15 @@ import SectionHeader from '../components/common/SectionHeader';
 
 export default function QualityAssurance() {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <Box sx={{ overflow: 'hidden', bgcolor: 'var(--bg-color)' }}>
       {/* 1. HERO SECTION */}
       <PageHero
-        title="QUALITY ASSURANCE"
-        breadcrumbs={['Home', 'Quality Assurance']}
-        description="Excellence in Seed Quality & Innovation. Governing every stage from genesis to presentation with uncompromising precision."
+        title={t('quality.hero_title')}
+        breadcrumbs={[t('navbar.home'), t('quality.hero_title')]}
+        description={t('quality.hero_desc')}
         bgColor="var(--primary-green)"
         bgImage="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=2000&auto=format&fit=crop"
         darkTheme={true}
@@ -74,7 +76,7 @@ export default function QualityAssurance() {
                   mb: 1
                 }}
               >
-                QUALITY MANAGEMENT
+                {t('quality.intro_subtitle')}
               </Typography>
               <Typography
                 variant="h2"
@@ -87,7 +89,7 @@ export default function QualityAssurance() {
                   fontFamily: 'var(--heading-font)'
                 }}
               >
-                Uncompromising Quality
+                {t('quality.intro_title')}
               </Typography>
 
               <Stack spacing={3} sx={{ mb: 5 }}>
@@ -100,7 +102,7 @@ export default function QualityAssurance() {
                     fontWeight: 500
                   }}
                 >
-                  At B.L. Seeds Farm, quality is not a benchmark—it is a philosophy embedded in every decision, every process, and every seed we produce.
+                  {t('quality.intro_p1')}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -110,7 +112,7 @@ export default function QualityAssurance() {
                     lineHeight: 1.8
                   }}
                 >
-                  From the genesis of seed production to its final presentation, each stage is governed by precision, discipline, and uncompromising attention to detail. This ensures exceptional genetic integrity, superior germination performance, and long-lasting seed vitality.
+                  {t('quality.intro_p2')}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -120,7 +122,7 @@ export default function QualityAssurance() {
                     lineHeight: 1.8
                   }}
                 >
-                  Our quality framework is built on advanced scientific methodologies and globally aligned standards. Every seed lot undergoes rigorous, multi-tiered validation before it reaches the field.
+                  {t('quality.intro_p3')}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -130,7 +132,7 @@ export default function QualityAssurance() {
                     lineHeight: 1.8
                   }}
                 >
-                  Backed by expert agronomists, advanced processing systems, and controlled storage infrastructure, we deliver seeds that represent consistency, reliability, and elite performance.
+                  {t('quality.intro_p4')}
                 </Typography>
               </Stack>
 
@@ -153,7 +155,7 @@ export default function QualityAssurance() {
                     fontFamily: 'var(--heading-font)'
                   }}
                 >
-                  "We don’t just meet expectations— we define the standard."
+                  {t('quality.intro_quote')}
                 </Typography>
               </Box>
             </Grid>
@@ -221,10 +223,10 @@ export default function QualityAssurance() {
                       <WorkspacePremiumIcon sx={{ color: 'var(--accent-gold)', fontSize: '2.5rem' }} />
                       <Box>
                         <Typography variant="h6" sx={{ fontWeight: 800, color: 'white', mb: 0.2 }}>
-                          Agronomist Approved
+                          {t('quality.badge_title_1')}
                         </Typography>
                         <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>
-                          Strict Standard Alignment
+                          {t('quality.badge_desc_1')}
                         </Typography>
                       </Box>
                     </Stack>
@@ -254,10 +256,10 @@ export default function QualityAssurance() {
                   </Box>
                   <Box>
                     <Typography sx={{ fontWeight: 900, fontSize: '1rem', leadingHeight: 1 }}>
-                      100% GENETIC
+                      {t('quality.badge_title_2')}
                     </Typography>
                     <Typography sx={{ fontWeight: 700, fontSize: '0.8rem', opacity: 0.9 }}>
-                      Integrity Guaranteed
+                      {t('quality.badge_desc_2')}
                     </Typography>
                   </Box>
                 </Box>
@@ -270,7 +272,7 @@ export default function QualityAssurance() {
       {/* 3. OPERATIONS PILLARS (THE THREE PILLARS) */}
       <Box sx={{ py: 10, bgcolor: 'rgba(5, 150, 105, 0.02)' }}>
         <Container maxWidth="xl">
-          <SectionHeader title="THE THREE PILLARS OF" highlight="OUR SEED QUALITY" />
+          <SectionHeader title={t('quality.pillars_title')} highlight={t('quality.pillars_highlight')} />
 
           {/* PILLAR 1: SEED PROCESSING */}
           <Grid container spacing={8} sx={{ alignItems: 'center', mb: { xs: 12, md: 16 } }}>
@@ -308,7 +310,7 @@ export default function QualityAssurance() {
                     boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
                   }}
                 >
-                  PILLAR 01 • HARVEST & CLEAN
+                  {t('quality.pillar1_badge')}
                 </Box>
               </Box>
             </Grid>
@@ -319,7 +321,7 @@ export default function QualityAssurance() {
                 variant="overline"
                 sx={{ color: 'var(--secondary-green)', fontWeight: 800, letterSpacing: '0.1rem' }}
               >
-                PRECISION AT EVERY STAGE
+                {t('quality.pillar1_subtitle')}
               </Typography>
               <Typography
                 variant="h3"
@@ -331,25 +333,25 @@ export default function QualityAssurance() {
                   fontFamily: 'var(--heading-font)'
                 }}
               >
-                Seed Processing
+                {t('quality.pillar1_title')}
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 4, fontSize: '1.05rem' }}
               >
-                Seed processing is a vital step in ensuring consistency, purity, and performance. Our modern facilities are equipped with advanced machinery designed for accuracy and efficiency.
+                {t('quality.pillar1_p1')}
               </Typography>
 
               {/* Sub Process List */}
               <Box sx={{ mb: 4 }}>
                 <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 2, color: 'var(--text-primary)' }}>
-                  Each seed batch undergoes a structured process including:
+                  {t('quality.pillar1_list_title')}
                 </Typography>
                 <Grid container spacing={2}>
                   {[
-                    { title: 'Cleaning', desc: 'Eliminates sand, chaff, weeds, and lightweight debris.', icon: <AutoAwesomeIcon /> },
-                    { title: 'Grading', desc: 'Sizes and weights each seed to ensure absolute physical uniformity.', icon: <LayersIcon /> },
-                    { title: 'Advanced Sorting', desc: 'Optical separators isolate and remove any damaged or off-color seeds.', icon: <CheckCircleIcon /> }
+                    { title: t('quality.pillar1_l1_t'), desc: t('quality.pillar1_l1_d'), icon: <AutoAwesomeIcon /> },
+                    { title: t('quality.pillar1_l2_t'), desc: t('quality.pillar1_l2_d'), icon: <LayersIcon /> },
+                    { title: t('quality.pillar1_l3_t'), desc: t('quality.pillar1_l3_d'), icon: <CheckCircleIcon /> }
                   ].map((step, idx) => (
                     <Grid size={{ xs: 12, sm: 6, md: 12 }} key={idx}>
                       <Stack direction="row" spacing={2} sx={{ alignItems: 'flex-start' }}>
@@ -382,7 +384,7 @@ export default function QualityAssurance() {
                 variant="body2"
                 sx={{ color: 'var(--text-secondary)', lineHeight: 1.7, mb: 4 }}
               >
-                This eliminates impurities, damaged seeds, and unwanted materials, ensuring uniform size and superior physical purity. Our skilled technical team closely monitors every stage under strict quality protocols, ensuring high germination standards and dependable field performance.
+                {t('quality.pillar1_p2')}
               </Typography>
 
               {/* Result badge */}
@@ -395,7 +397,7 @@ export default function QualityAssurance() {
                 }}
               >
                 <Typography sx={{ color: 'var(--primary-green)', fontWeight: 700, fontSize: '0.95rem' }}>
-                  <strong>Result:</strong> Seeds that are uniform, vigorous, and reliable.
+                  <strong>{t('quality.result_label')}</strong> {t('quality.pillar1_result')}
                 </Typography>
               </Box>
             </Grid>
@@ -409,7 +411,7 @@ export default function QualityAssurance() {
                 variant="overline"
                 sx={{ color: 'var(--secondary-green)', fontWeight: 800, letterSpacing: '0.1rem' }}
               >
-                PRESERVING SEED VITALITY
+                {t('quality.pillar2_subtitle')}
               </Typography>
               <Typography
                 variant="h3"
@@ -421,21 +423,21 @@ export default function QualityAssurance() {
                   fontFamily: 'var(--heading-font)'
                 }}
               >
-                Cold Storage Facility
+                {t('quality.pillar2_title')}
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 4, fontSize: '1.05rem' }}
               >
-                Maintaining seed strength requires precise environmental control. At B.L. Seeds Farm, our advanced cold storage systems are designed to preserve seed quality over extended periods. This scientific storage approach maintains genetic integrity and germination strength.
+                {t('quality.pillar2_p1')}
               </Typography>
 
               {/* Scientific storage metric cards */}
               <Grid container spacing={3} sx={{ mb: 4 }}>
                 {[
-                  { title: 'Controlled Temperature', desc: 'Thermal stabilization slows aging and maintains viability.', icon: <AcUnitIcon />, color: '#0ea5e9' },
-                  { title: 'Regulated Humidity', desc: 'Moisture regulation guards against mold and premature growth.', icon: <WaterDropIcon />, color: '#10b981' },
-                  { title: 'Deterioration Protection', desc: 'A sealed system guarding seeds against decay & outside decay.', icon: <ShieldIcon />, color: '#f59e0b' }
+                  { title: t('quality.pillar2_l1_t'), desc: t('quality.pillar2_l1_d'), icon: <AcUnitIcon />, color: '#0ea5e9' },
+                  { title: t('quality.pillar2_l2_t'), desc: t('quality.pillar2_l2_d'), icon: <WaterDropIcon />, color: '#10b981' },
+                  { title: t('quality.pillar2_l3_t'), desc: t('quality.pillar2_l3_d'), icon: <ShieldIcon />, color: '#f59e0b' }
                 ].map((item, idx) => (
                   <Grid size={{ xs: 12, sm: 4 }} key={idx}>
                     <Card
@@ -485,7 +487,7 @@ export default function QualityAssurance() {
                 variant="body2"
                 sx={{ color: 'var(--text-secondary)', lineHeight: 1.7, mb: 4 }}
               >
-                Continuous monitoring and expert supervision guarantee stability and consistency throughout storage, ensuring seeds stay fresh and ready to thrive when sown.
+                {t('quality.pillar2_p2')}
               </Typography>
 
               {/* Result badge */}
@@ -498,7 +500,7 @@ export default function QualityAssurance() {
                 }}
               >
                 <Typography sx={{ color: 'var(--primary-green)', fontWeight: 700, fontSize: '0.95rem' }}>
-                  <strong>Result:</strong> Fresh, robust seeds ready for optimal field performance.
+                  <strong>{t('quality.result_label')}</strong> {t('quality.pillar2_result')}
                 </Typography>
               </Box>
             </Grid>
@@ -537,7 +539,7 @@ export default function QualityAssurance() {
                     boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
                   }}
                 >
-                  PILLAR 02 • SCIENTIFIC STORAGE
+                  {t('quality.pillar2_badge')}
                 </Box>
               </Box>
             </Grid>
@@ -579,7 +581,7 @@ export default function QualityAssurance() {
                     boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
                   }}
                 >
-                  PILLAR 03 • LAB TESTING & SHIELD
+                  {t('quality.pillar3_badge')}
                 </Box>
               </Box>
             </Grid>
@@ -590,7 +592,7 @@ export default function QualityAssurance() {
                 variant="overline"
                 sx={{ color: 'var(--secondary-green)', fontWeight: 800, letterSpacing: '0.1rem' }}
               >
-                ASSURED QUALITY & PROTECTION
+                {t('quality.pillar3_subtitle')}
               </Typography>
               <Typography
                 variant="h3"
@@ -602,13 +604,13 @@ export default function QualityAssurance() {
                   fontFamily: 'var(--heading-font)'
                 }}
               >
-                Seed Testing & Treatment
+                {t('quality.pillar3_title')}
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 4, fontSize: '1.05rem' }}
               >
-                Seed testing is essential to ensure quality and consistency. Our advanced laboratories conduct detailed evaluations, validating each batch extensively before it is approved.
+                {t('quality.pillar3_p1')}
               </Typography>
 
               {/* Multi-layered testing parameters */}
@@ -620,15 +622,15 @@ export default function QualityAssurance() {
                       <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', mb: 2 }}>
                         <ScienceIcon sx={{ color: 'var(--primary-green)' }} />
                         <Typography variant="subtitle2" sx={{ fontWeight: 800 }}>
-                          Laboratory Evaluations
+                          {t('quality.pillar3_c1_title')}
                         </Typography>
                       </Stack>
                       <List disablePadding>
                         {[
-                          'Germination rate checks',
-                          'Physical purity analysis',
-                          'Moisture content verification',
-                          'Fungal & seed health screening'
+                          t('quality.pillar3_c1_l1'),
+                          t('quality.pillar3_c1_l2'),
+                          t('quality.pillar3_c1_l3'),
+                          t('quality.pillar3_c1_l4')
                         ].map((item, i) => (
                           <ListItem key={i} disableGutters sx={{ py: 0.5 }}>
                             <ListItemIcon sx={{ minWidth: 28, color: 'var(--secondary-green)' }}>
@@ -649,16 +651,16 @@ export default function QualityAssurance() {
                       <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', mb: 2 }}>
                         <BugReportIcon sx={{ color: 'var(--accent-gold)' }} />
                         <Typography variant="subtitle2" sx={{ fontWeight: 800 }}>
-                          Seed Protection
+                          {t('quality.pillar3_c2_title')}
                         </Typography>
                       </Stack>
                       <Typography variant="body2" sx={{ color: 'var(--text-secondary)', mb: 2, lineHeight: 1.6 }}>
-                        Post-testing, seeds undergo scientifically approved, eco-friendly treatments that protect against:
+                        {t('quality.pillar3_c2_desc')}
                       </Typography>
                       <List disablePadding>
                         {[
-                          'Seed-borne diseases',
-                          'Early-stage pest damage'
+                          t('quality.pillar3_c2_l1'),
+                          t('quality.pillar3_c2_l2')
                         ].map((item, i) => (
                           <ListItem key={i} disableGutters sx={{ py: 0.5 }}>
                             <ListItemIcon sx={{ minWidth: 28, color: 'var(--accent-gold)' }}>
@@ -677,7 +679,7 @@ export default function QualityAssurance() {
                 variant="body2"
                 sx={{ color: 'var(--text-secondary)', lineHeight: 1.7, mb: 4 }}
               >
-                Our expert agronomists supervise every treatment and testing procedure with strict quality control measures to safeguard genetic purity and boost field immunity.
+                {t('quality.pillar3_p2')}
               </Typography>
 
               {/* Result badge */}
@@ -690,7 +692,7 @@ export default function QualityAssurance() {
                 }}
               >
                 <Typography sx={{ color: 'var(--primary-green)', fontWeight: 700, fontSize: '0.95rem' }}>
-                  <strong>Result:</strong> Healthy, protected seeds with strong and uniform crop establishment.
+                  <strong>{t('quality.result_label')}</strong> {t('quality.pillar3_result')}
                 </Typography>
               </Box>
             </Grid>
@@ -701,33 +703,33 @@ export default function QualityAssurance() {
       {/* 4. WHY CHOOSE B.L. SEEDS FARM */}
       <Box sx={{ py: 12, bgcolor: 'var(--text-primary)', color: 'white' }}>
         <Container maxWidth="xl">
-          <SectionHeader title="WHY CHOOSE" highlight="B.L. SEEDS FARM" darkText={false} />
+          <SectionHeader title={t('quality.why_title')} highlight={t('quality.why_highlight')} darkText={false} />
 
           <Grid container spacing={4} sx={{ mt: 4 }}>
             {[
               {
-                title: 'Advanced Technology',
-                desc: 'Equipped with next-generation seed processing machinery for precision sorting and grading.',
+                title: t('quality.why_c1_t'),
+                desc: t('quality.why_c1_d'),
                 icon: <SettingsSuggestIcon />
               },
               {
-                title: 'Scientific Quality Control',
-                desc: 'Rigorous multi-tiered laboratory assessments testing vitality, purity, and germination rates.',
+                title: t('quality.why_c2_t'),
+                desc: t('quality.why_c2_d'),
                 icon: <ScienceIcon />
               },
               {
-                title: 'Experienced Team',
-                desc: 'Led by seasoned agronomists and seed specialists dedicated to crop excellence.',
+                title: t('quality.why_c3_t'),
+                desc: t('quality.why_c3_d'),
                 icon: <GroupsIcon />
               },
               {
-                title: 'Consistent Field Performance',
-                desc: 'Engineered for rapid establishment, high physical purity, and outstanding crop yields.',
+                title: t('quality.why_c4_t'),
+                desc: t('quality.why_c4_d'),
                 icon: <TrendingUpIcon />
               },
               {
-                title: 'Farmer-Centric Approach',
-                desc: 'Practical agronomist assistance and reliable seed supply to support farming profitability.',
+                title: t('quality.why_c5_t'),
+                desc: t('quality.why_c5_d'),
                 icon: <NaturePeopleIcon />
               }
             ].map((card, idx) => (
@@ -799,7 +801,7 @@ export default function QualityAssurance() {
               fontFamily: 'var(--heading-font)'
             }}
           >
-            Ready to Experience the B.L. Seeds Quality Standard?
+            {t('quality.cta_title')}
           </Typography>
           <Typography
             variant="body1"
@@ -812,7 +814,7 @@ export default function QualityAssurance() {
               lineHeight: 1.6
             }}
           >
-            Partner with us today to secure premium, scientifically-backed seed lots engineered for elite agricultural success.
+            {t('quality.cta_desc')}
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -838,7 +840,7 @@ export default function QualityAssurance() {
               component={RouterLink}
               to="/contact"
             >
-              GET IN TOUCH
+              {t('quality.cta_btn_1')}
             </Button>
             <Button
               variant="outlined"
@@ -861,7 +863,7 @@ export default function QualityAssurance() {
               component={RouterLink}
               to="/products"
             >
-              OUR SEED PORTFOLIO
+              {t('quality.cta_btn_2')}
             </Button>
           </Stack>
         </Container>

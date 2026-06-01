@@ -6,8 +6,10 @@ import { contactInfo, whyConnectReasons } from '../data/constants';
 import { useRef, useState } from 'react';
 import emailjs from "@emailjs/browser";
 import { VITE_EMAILJS_PUBLIC_KEY, VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_CONTACT_TEMPLATE_ID } from '../data/config';
+import { useTranslation } from 'react-i18next';
 
 export default function Contact() {
+  const { t } = useTranslation();
 
   const formRef = useRef<HTMLFormElement>(null);
   const [isSending, setIsSending] = useState(false);
@@ -24,12 +26,12 @@ export default function Contact() {
       VITE_EMAILJS_PUBLIC_KEY
     ).then(
       () => {
-        alert("Email sent successfully!");
+        alert(t('contact.msg_success'));
         formRef.current?.reset();
         setIsSending(false);
       },
       (error) => {
-        alert("Failed to send email. Please try again.");
+        alert(t('contact.msg_error'));
         console.error(error);
         setIsSending(false);
       }
@@ -40,9 +42,9 @@ export default function Contact() {
     <Box>
       {/* HERO SECTION */}
       <PageHero
-        title="Contact Us"
-        breadcrumbs={['Home', 'Contact Us']}
-        description="We are here to help! Get in touch with us for any queries, support or business inquiries."
+        title={t('contact.hero_title')}
+        breadcrumbs={[t('navbar.home'), t('contact.breadcrumb')]}
+        description={t('contact.hero_desc')}
         bgColor="#14532d"
         bgImage="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=2070&auto=format&fit=crop"
         darkTheme={true}
@@ -54,9 +56,9 @@ export default function Contact() {
           <Grid container spacing={8}>
             {/* LEFT SIDEBAR */}
             <Grid size={{ xs: 12, md: 4 }}>
-              <Typography variant="h3" sx={{ fontWeight: 800, mb: 3 }}>Get in Touch</Typography>
+              <Typography variant="h3" sx={{ fontWeight: 800, mb: 3 }}>{t('contact.get_in_touch')}</Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', mb: 6 }}>
-                Have a question or want to work with us? Fill out the form and our team will get back to you as soon as possible.
+                {t('contact.get_in_touch_desc')}
               </Typography>
 
               <Stack spacing={5}>
@@ -66,9 +68,9 @@ export default function Contact() {
                       {item.icon}
                     </Avatar>
                     <Box>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 0.5 }}>{item.title}</Typography>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 0.5 }}>{t(`contact.info_${index + 1}_t`)}</Typography>
                       <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>{item.content}</Typography>
-                      {item.sub && <Typography variant="caption" sx={{ color: 'var(--text-secondary)', display: 'block', mt: 0.5 }}>{item.sub}</Typography>}
+                      {item.sub && <Typography variant="caption" sx={{ color: 'var(--text-secondary)', display: 'block', mt: 0.5 }}>{t(`contact.info_${index + 1}_sub`)}</Typography>}
                     </Box>
                   </Stack>
                 ))}
@@ -79,24 +81,24 @@ export default function Contact() {
             <Grid size={{ xs: 12, md: 8 }}>
               <Card sx={{ borderRadius: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', border: '1px solid #f0f0f0', p: { xs: 2, md: 4 } }}>
                 <CardContent>
-                  <Typography variant="h4" sx={{ fontWeight: 800, mb: 4 }}>Send Us a Message</Typography>
+                  <Typography variant="h4" sx={{ fontWeight: 800, mb: 4 }}>{t('contact.form_title')}</Typography>
 
                   <Box component="form" ref={formRef} onSubmit={sendEmail}>
                     <Grid container spacing={3}>
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="from_name" label="Your Name" placeholder="Enter your full name" variant="outlined" required />
+                        <TextField fullWidth name="from_name" label={t('contact.label_name')} placeholder={t('contact.ph_name')} variant="outlined" required />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="from_email" label="Your Email" placeholder="Enter your email" variant="outlined" type="email" required />
+                        <TextField fullWidth name="from_email" label={t('contact.label_email')} placeholder={t('contact.ph_email')} variant="outlined" type="email" required />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="contact" label="Your Contact No." placeholder="Enter your 10 digit Contact No." variant="outlined" type="tel" required slotProps={{ htmlInput: { maxLength: 10 } }} />
+                        <TextField fullWidth name="contact" label={t('contact.label_contact')} placeholder={t('contact.ph_contact')} variant="outlined" type="tel" required slotProps={{ htmlInput: { maxLength: 10 } }} />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 12 }}>
-                        <TextField fullWidth name="subject" label="Subject" placeholder="Enter subject" variant="outlined" required />
+                        <TextField fullWidth name="subject" label={t('contact.label_subject')} placeholder={t('contact.ph_subject')} variant="outlined" required />
                       </Grid>
                       <Grid size={{ xs: 12 }}>
-                        <TextField fullWidth name="message" multiline rows={5} label="Your Message" placeholder="Write your message here..." variant="outlined" required />
+                        <TextField fullWidth name="message" multiline rows={5} label={t('contact.label_message')} placeholder={t('contact.ph_message')} variant="outlined" required />
                       </Grid>
 
                       <Grid size={{ xs: 12 }}>
@@ -114,7 +116,7 @@ export default function Contact() {
                           }}
                           disabled={isSending}
                         >
-                          {isSending ? "Sending..." : "SEND MESSAGE"}
+                          {isSending ? t('contact.btn_submitting') : t('contact.btn_submit')}
                         </Button>
                       </Grid>
                     </Grid>
@@ -141,7 +143,7 @@ export default function Contact() {
       {/* WHY CONNECT WITH US */}
       <Box sx={{ py: 10, bgcolor: '#fbfcfb', borderTop: '1px solid #eee' }}>
         <Container maxWidth="xl">
-          <SectionHeader title="Why Connect" highlight="With Us?" />
+          <SectionHeader title={t('contact.why_connect_t1')} highlight={t('contact.why_connect_t2')} />
 
           <Grid container spacing={4}>
             {whyConnectReasons.map((benefit, index) => (
@@ -150,8 +152,8 @@ export default function Contact() {
                   <Avatar sx={{ bgcolor: '#f0f7f2', color: 'var(--primary-green)', mx: 'auto', mb: 2, width: 60, height: 60 }}>
                     {benefit.icon}
                   </Avatar>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 1, lineHeight: 1.2 }}>{benefit.title}</Typography>
-                  <Typography variant="caption" sx={{ color: 'var(--text-secondary)', display: 'block', px: 1 }}>{benefit.desc}</Typography>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 1, lineHeight: 1.2 }}>{t(`contact.wc_${index + 1}_t`)}</Typography>
+                  <Typography variant="caption" sx={{ color: 'var(--text-secondary)', display: 'block', px: 1 }}>{t(`contact.wc_${index + 1}_d`)}</Typography>
                 </Box>
               </Grid>
             ))}

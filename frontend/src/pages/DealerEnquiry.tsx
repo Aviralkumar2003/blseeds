@@ -10,8 +10,10 @@ import { dealerBenefits, CONTACT_DETAILS } from '../data/constants';
 import { VITE_EMAILJS_PUBLIC_KEY, VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_DEALER_ENQUIRY_TEMPLATE_ID } from '../data/config';
 import DealerEnquiry1 from '../assets/Farm/DealerEnquiry1.png';
 import DealerEnquiry2 from '../assets/Farm/DealerEnquiry2.png';
+import { useTranslation } from 'react-i18next';
 
 export default function DealerEnquiry() {
+  const { t } = useTranslation();
 
   const formRef = useRef<HTMLFormElement>(null);
   const [isSending, setIsSending] = useState(false);
@@ -35,13 +37,13 @@ export default function DealerEnquiry() {
       VITE_EMAILJS_PUBLIC_KEY
     ).then(
       () => {
-        alert('Dealer enquiry submitted successfully! Our team will contact you shortly.');
+        alert(t('dealer.msg_success'));
         formRef.current?.reset();
         setSelectedProducts([]);
         setIsSending(false);
       },
       (error) => {
-        alert('Failed to submit enquiry. Please try again.');
+        alert(t('dealer.msg_error'));
         console.error(error);
         setIsSending(false);
       }
@@ -65,12 +67,12 @@ export default function DealerEnquiry() {
         <Container maxWidth="xl">
           <Box sx={{ maxWidth: '700px' }}>
             <Typography variant="h1" sx={{ fontSize: { xs: '2.5rem', md: '4rem' }, fontWeight: 800, mb: 2, color: 'white' }}>
-              Become Our Partner. <br />
-              <span style={{ color: 'var(--accent-gold)' }}>Grow Together.</span>
+              {t('dealer.hero_title_1')} <br />
+              <span style={{ color: 'var(--accent-gold)' }}>{t('dealer.hero_title_2')}</span>
             </Typography>
             <Typography variant="h6" sx={{ fontWeight: 500, opacity: 0.9, lineHeight: 1.6, color: 'white' }}>
-              Join our dealer network and grow your business with <br />
-              high quality seeds and trusted support.
+              {t('dealer.hero_subtitle_1')} <br />
+              {t('dealer.hero_subtitle_2')}
             </Typography>
           </Box>
         </Container>
@@ -80,9 +82,9 @@ export default function DealerEnquiry() {
       <Box sx={{ py: 3, bgcolor: '#f8f9fa', borderBottom: '1px solid #eee' }}>
         <Container maxWidth="xl">
           <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-            <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-secondary)' }}>Home</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-secondary)' }}>{t('navbar.home')}</Typography>
             <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>&gt;</Typography>
-            <Typography variant="body2" sx={{ fontWeight: 700, color: 'var(--primary-green)' }}>Dealer Enquiry</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 700, color: 'var(--primary-green)' }}>{t('dealer.breadcrumb')}</Typography>
           </Stack>
         </Container>
       </Box>
@@ -122,10 +124,10 @@ export default function DealerEnquiry() {
       <Box sx={{ py: 10, bgcolor: 'white' }}>
         <Container maxWidth="xl">
           <Box sx={{ textAlign: 'center', mb: 8 }}>
-            <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>Contract Farming Program</Typography>
+            <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>{t('dealer.program_title')}</Typography>
             <Box sx={{ width: 80, height: 4, bgcolor: 'var(--primary-green)', mx: 'auto', borderRadius: 2, mb: 4 }} />
             <Typography variant="h6" sx={{ color: 'var(--text-secondary)', maxWidth: '900px', mx: 'auto', lineHeight: 1.8 }}>
-              At B.L. Seeds Farm, contract farming is more than a system—it is a trusted partnership built on experience, transparency, and a shared commitment to quality seed production. With decades of agricultural expertise, we work closely with farmers to produce premium vegetable seeds that meet the highest standards of purity and performance.
+              {t('dealer.program_desc')}
             </Typography>
           </Box>
 
@@ -142,27 +144,27 @@ export default function DealerEnquiry() {
               }} />
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>Our Philosophy</Typography>
+              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>{t('dealer.philosophy_title')}</Typography>
               <Box sx={{ width: 60, height: 4, bgcolor: 'var(--primary-green)', borderRadius: 2, mb: 4 }} />
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 3, fontSize: '1.1rem' }}>
-                We believe that successful seed production begins with strong farmer relationships and scientific farming practices. Our contract farming model is designed to empower farmers with the right knowledge, reliable support, and assured returns.
+                {t('dealer.philosophy_p1')}
               </Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1.1rem' }}>
-                From field selection to final seed processing, every step is carefully supervised to maintain consistency, quality, and long-term sustainability.
+                {t('dealer.philosophy_p2')}
               </Typography>
             </Grid>
           </Grid>
 
           {/* How We Work */}
           <Box sx={{ mb: 12 }}>
-            <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, textAlign: 'center' }}>How We Work</Typography>
+            <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, textAlign: 'center' }}>{t('dealer.how_we_work_title')}</Typography>
             <Box sx={{ width: 60, height: 4, bgcolor: 'var(--primary-green)', mx: 'auto', borderRadius: 2, mb: 6 }} />
             <Grid container spacing={4}>
               {[
-                { title: "1. Farmer & Field Selection", desc: "We carefully select progressive farmers and suitable regions with optimal soil and climate conditions to ensure the best seed output." },
-                { title: "2. Complete Technical Guidance", desc: "Our experienced agronomists provide end-to-end support throughout the crop cycle—covering sowing practices, isolation distance, crop nutrition, and pest & disease management." },
-                { title: "3. Continuous Field Monitoring", desc: "Regular field visits and inspections are conducted to ensure genetic purity, crop health, and strict adherence to our quality standards." },
-                { title: "4. Scientific Harvesting & Processing", desc: "Seeds are harvested at precise maturity stages and processed using modern seed cleaning, grading, and treatment technologies at our facilities." }
+                { title: t('dealer.hww_s1_t'), desc: t('dealer.hww_s1_d') },
+                { title: t('dealer.hww_s2_t'), desc: t('dealer.hww_s2_d') },
+                { title: t('dealer.hww_s3_t'), desc: t('dealer.hww_s3_d') },
+                { title: t('dealer.hww_s4_t'), desc: t('dealer.hww_s4_d') }
               ].map((step, idx) => (
                 <Grid size={{ xs: 12, sm: 6, md: 3 }} key={idx}>
                   <Card sx={{ height: '100%', borderRadius: '20px', border: '1px solid #f0f0f0', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', transition: 'all 0.3s', '&:hover': { transform: 'translateY(-10px)', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' } }}>
@@ -179,15 +181,15 @@ export default function DealerEnquiry() {
           {/* Why Choose & Quality - Alternating Image */}
           <Grid container spacing={8} sx={{ mb: 4, alignItems: 'center' }}>
             <Grid size={{ xs: 12, md: 6 }} sx={{ order: { xs: 2, md: 1 } }}>
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>Why Farmers Choose B.L. Seeds Farm</Typography>
+              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>{t('dealer.why_choose_title')}</Typography>
               <Box sx={{ width: 60, height: 4, bgcolor: 'var(--primary-green)', borderRadius: 2, mb: 5 }} />
               <Stack spacing={4}>
                 {[
-                  { title: "Assured Buy-Back", desc: "Guaranteed procurement of seed produce" },
-                  { title: "Expert-Led Support", desc: "Guidance from skilled agronomists at every stage" },
-                  { title: "Premium Inputs", desc: "Access to high-quality parent lines and advanced techniques" },
-                  { title: "Higher Returns", desc: "Better profitability than traditional crop cultivation" },
-                  { title: "Reliable Partnership", desc: "Long-term, transparent, and farmer-focused collaboration" }
+                  { title: t('dealer.wc_1_t'), desc: t('dealer.wc_1_d') },
+                  { title: t('dealer.wc_2_t'), desc: t('dealer.wc_2_d') },
+                  { title: t('dealer.wc_3_t'), desc: t('dealer.wc_3_d') },
+                  { title: t('dealer.wc_4_t'), desc: t('dealer.wc_4_d') },
+                  { title: t('dealer.wc_5_t'), desc: t('dealer.wc_5_d') }
                 ].map((item, idx) => (
                   <Stack key={idx} direction="row" spacing={3} sx={{ alignItems: 'flex-start' }}>
                     <Box sx={{ p: 1, bgcolor: '#f0f7f2', borderRadius: '50%', mt: 0.5 }}>
@@ -221,17 +223,17 @@ export default function DealerEnquiry() {
         <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.05, backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '30px 30px' }} />
 
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-          <Typography variant="h3" sx={{ fontWeight: 800, mb: 2, color: 'var(--accent-gold)' }}>Our Quality Commitment</Typography>
+          <Typography variant="h3" sx={{ fontWeight: 800, mb: 2, color: 'var(--accent-gold)' }}>{t('dealer.commitment_title')}</Typography>
           <Box sx={{ width: 80, height: 4, bgcolor: 'var(--accent-gold)', mx: 'auto', borderRadius: 2, mb: 4 }} />
           <Typography variant="h6" sx={{ fontWeight: 400, opacity: 0.9, lineHeight: 1.8, mb: 8, maxWidth: '800px', mx: 'auto', color: 'var(--accent-gold)' }}>
-            At B.L. Seeds Farm, quality is not just a process—it is our identity. Every seed lot undergoes strict monitoring and multi-level quality checks to ensure:
+            {t('dealer.commitment_desc')}
           </Typography>
 
           <Grid container spacing={4} sx={{ mb: 8 }}>
             {[
-              "High genetic purity",
-              "Superior germination performance",
-              "Strong seed health and vigor"
+              t('dealer.commitment_l1'),
+              t('dealer.commitment_l2'),
+              t('dealer.commitment_l3')
             ].map((check, idx) => (
               <Grid size={{ xs: 12, md: 4 }} key={idx}>
                 <Box sx={{ bgcolor: 'rgba(255,255,255,0.1)', p: 4, borderRadius: '20px', height: '100%', backdropFilter: 'blur(10px)', transition: 'all 0.3s', '&:hover': { bgcolor: 'rgba(255,255,255,0.15)', transform: 'translateY(-5px)' } }}>
@@ -243,7 +245,7 @@ export default function DealerEnquiry() {
           </Grid>
 
           <Typography variant="body1" sx={{ opacity: 0.9, lineHeight: 1.8, fontSize: '1.1rem', maxWidth: '800px', mx: 'auto', color: 'var(--accent-gold)' }}>
-            Our advanced seed processing systems and scientific post-harvest practices ensure that the final product consistently meets and exceeds industry standards.
+            {t('dealer.commitment_footer')}
           </Typography>
         </Container>
       </Box>
@@ -254,10 +256,10 @@ export default function DealerEnquiry() {
           <Grid container spacing={8}>
             {/* LEFT SIDEBAR */}
             <Grid size={{ xs: 12, md: 4 }}>
-              <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>Dealer Enquiry</Typography>
+              <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>{t('dealer.form_title')}</Typography>
               <Box sx={{ width: 80, height: 4, bgcolor: 'var(--primary-green)', borderRadius: 2, mb: 4 }} />
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', mb: 6 }}>
-                Fill out the form and our team will get in touch with you shortly.
+                {t('dealer.form_subtitle')}
               </Typography>
 
               <Stack spacing={4} sx={{ mb: 8 }}>
@@ -267,8 +269,8 @@ export default function DealerEnquiry() {
                       {item.icon}
                     </Box>
                     <Box>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 0.5 }}>{item.title}</Typography>
-                      <Typography variant="body2" sx={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>{item.desc}</Typography>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 0.5 }}>{t(`dealer.benefits_${index + 1}_t`)}</Typography>
+                      <Typography variant="body2" sx={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>{t(`dealer.benefits_${index + 1}_d`)}</Typography>
                     </Box>
                   </Stack>
                 ))}
@@ -276,8 +278,8 @@ export default function DealerEnquiry() {
 
               {/* Need Help Widget */}
               <Box sx={{ bgcolor: '#f0f7f2', borderRadius: '15px', p: 4 }}>
-                <Typography variant="h6" sx={{ fontWeight: 800, mb: 3 }}>Need Help?</Typography>
-                <Typography variant="body2" sx={{ color: 'var(--text-secondary)', mb: 4 }}>Our team is here to help you.</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 800, mb: 3 }}>{t('dealer.help_title')}</Typography>
+                <Typography variant="body2" sx={{ color: 'var(--text-secondary)', mb: 4 }}>{t('dealer.help_subtitle')}</Typography>
                 <Stack spacing={2.5}>
                   <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
                     <PhoneIcon sx={{ color: 'var(--primary-green)', fontSize: '1.2rem' }} />
@@ -299,7 +301,7 @@ export default function DealerEnquiry() {
             <Grid size={{ xs: 12, md: 8 }}>
               <Card sx={{ borderRadius: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', border: '1px solid #f0f0f0', p: { xs: 2, md: 4 } }}>
                 <CardContent>
-                  <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>Dealer Enquiry Form</Typography>
+                  <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>{t('dealer.form_box_title')}</Typography>
                   <Box sx={{ width: 60, height: 4, bgcolor: 'var(--primary-green)', borderRadius: 2, mb: 4 }} />
 
                   <Box component="form" ref={formRef} onSubmit={sendEnquiry}>
@@ -309,30 +311,30 @@ export default function DealerEnquiry() {
                     <Grid container spacing={3}>
                       {/* Personal Details */}
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="dealer_name" label="Full Name" placeholder="Enter your full name" variant="outlined" required />
+                        <TextField fullWidth name="dealer_name" label={t('dealer.label_name')} placeholder={t('dealer.ph_name')} variant="outlined" required />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="contact" label="Your Contact No." placeholder="Enter your 10 digit Contact No." variant="outlined" type="tel" required slotProps={{ htmlInput: { maxLength: 10 } }} />
+                        <TextField fullWidth name="contact" label={t('dealer.label_contact')} placeholder={t('dealer.ph_contact')} variant="outlined" type="tel" required slotProps={{ htmlInput: { maxLength: 10 } }} />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="dealer_email" label="Email Address" placeholder="Enter your email address" variant="outlined" type="email" required/>
+                        <TextField fullWidth name="dealer_email" label={t('dealer.label_email')} placeholder={t('dealer.ph_email')} variant="outlined" type="email" required/>
                       </Grid>
 
                       {/* Location */}
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="state" label="State" placeholder="Enter your state" variant="outlined" required />
+                        <TextField fullWidth name="state" label={t('dealer.label_state')} placeholder={t('dealer.ph_state')} variant="outlined" required />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="district" label="District" placeholder="Enter your district" variant="outlined" required />
+                        <TextField fullWidth name="district" label={t('dealer.label_district')} placeholder={t('dealer.ph_district')} variant="outlined" required />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="city" label="City / Town" placeholder="Enter your city or town" variant="outlined" required />
+                        <TextField fullWidth name="city" label={t('dealer.label_city')} placeholder={t('dealer.ph_city')} variant="outlined" required />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField fullWidth name="pincode" label="Pincode" placeholder="Enter pincode" variant="outlined" required />
+                        <TextField fullWidth name="pincode" label={t('dealer.label_pincode')} placeholder={t('dealer.ph_pincode')} variant="outlined" required />
                       </Grid>
                       <Grid size={{ xs: 12 }}>
-                        <TextField fullWidth name="address" multiline rows={2} label="Complete Address" placeholder="Enter your complete address" variant="outlined" required />
+                        <TextField fullWidth name="address" multiline rows={2} label={t('dealer.label_address')} placeholder={t('dealer.ph_address')} variant="outlined" required />
                       </Grid>
 
                       {/* Business Info */}
@@ -352,14 +354,14 @@ export default function DealerEnquiry() {
                       </Grid> */}
 
                       <Grid size={{ xs: 12, sm: 12 }}>
-                        <TextField fullWidth name="requirements" multiline rows={3} label="Requirements" placeholder="Enter your requirements..." variant="outlined" required />
+                        <TextField fullWidth name="requirements" multiline rows={3} label={t('dealer.label_req')} placeholder={t('dealer.ph_req')} variant="outlined" required />
                       </Grid>
                       {/* Additional message */}
                       <Grid size={{ xs: 12, sm: 12 }}>
-                        <TextField fullWidth name="subject" label="Mail Subject" placeholder="Enter Subject" variant="outlined" required/>
+                        <TextField fullWidth name="subject" label={t('dealer.label_subject')} placeholder={t('dealer.ph_subject')} variant="outlined" required/>
                       </Grid>
                       <Grid size={{ xs: 12, sm: 12 }}>
-                        <TextField fullWidth name="message" multiline rows={3} label="Mail Body" placeholder="Enter Mail Body" variant="outlined" required/>
+                        <TextField fullWidth name="message" multiline rows={3} label={t('dealer.label_body')} placeholder={t('dealer.ph_body')} variant="outlined" required/>
                       </Grid>
 
                       <Grid size={{ xs: 12 }}>
@@ -377,7 +379,7 @@ export default function DealerEnquiry() {
                           }}
                           disabled={isSending}
                         >
-                          {isSending ? 'Submitting...' : 'SUBMIT ENQUIRY'}
+                          {isSending ? t('dealer.btn_submitting') : t('dealer.btn_submit')}
                         </Button>
                       </Grid>
                     </Grid>

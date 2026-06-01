@@ -3,6 +3,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { CropDescription, CropDetailValue } from '../../data/constants';
+import { useTranslation } from 'react-i18next';
 
 interface ProductDetailModalProps {
   open: boolean;
@@ -19,7 +20,7 @@ function formatKey(key: string): string {
     .trim();
 }
 
-function renderValue(value: CropDetailValue) {
+function renderValue(value: CropDetailValue, t: any) {
   if (Array.isArray(value)) {
     return (
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
@@ -39,11 +40,11 @@ function renderValue(value: CropDetailValue) {
     return (
       <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
         {obj.kharif && (
-          <Chip label={`Kharif: ${obj.kharif}`} size="small"
+          <Chip label={`${t('Kharif')}: ${t(obj.kharif)}`} size="small"
             sx={{ bgcolor: '#e8f5e9', color: '#1b5e20', fontWeight: 600, fontSize: '0.75rem' }} />
         )}
         {obj.summer && (
-          <Chip label={`Summer: ${obj.summer}`} size="small"
+          <Chip label={`${t('Summer')}: ${t(obj.summer)}`} size="small"
             sx={{ bgcolor: '#fff8e1', color: '#e65100', fontWeight: 600, fontSize: '0.75rem' }} />
         )}
       </Box>
@@ -63,6 +64,8 @@ export default function ProductDetailModal({
   productImg,
   cropData,
 }: ProductDetailModalProps) {
+  const { t } = useTranslation();
+
   if (!cropData) return null;
 
   return (
@@ -220,9 +223,9 @@ export default function ProductDetailModal({
                       mt: { sm: '2px' },
                     }}
                   >
-                    {formatKey(key)}
+                    {t(formatKey(key))}
                   </Typography>
-                  <Box sx={{ flex: 1 }}>{renderValue(value)}</Box>
+                  <Box sx={{ flex: 1 }}>{renderValue(value, t)}</Box>
                 </Box>
               ))}
             </Box>

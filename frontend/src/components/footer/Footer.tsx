@@ -7,15 +7,16 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { CONTACT_DETAILS } from '../../data/constants';
 
 const quickLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'Products', path: '/products' },
-  { name: 'Quality Assurance', path: '/quality-assurance' },
-  { name: 'Contract Farming Program', path: '/dealer-enquiry' },
-  { name: 'About Us', path: '/about' },
-  { name: 'Contact', path: '/contact' }
+  { key: 'home', path: '/' },
+  { key: 'products', path: '/products' },
+  { key: 'quality_assurance', path: '/quality-assurance' },
+  { key: 'contract_farming', path: '/dealer-enquiry' },
+  { key: 'about', path: '/about' },
+  { key: 'contact', path: '/contact' }
 ];
 
 const socialButtons = [
@@ -25,6 +26,7 @@ const socialButtons = [
 ];
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <Box sx={{ bgcolor: '#121212', color: 'white', pt: 10, pb: 4, fontFamily: 'var(--body-font)' }}>
       <Container maxWidth="xl">
@@ -35,7 +37,7 @@ export default function Footer() {
               B.L SEEDS FARM
             </Typography>
             <Typography variant="body2" sx={{ color: 'grey.500', mb: 4, lineHeight: 1.8, maxWidth: '90%' }}>
-              At B.L. Seeds Farm, quality is not a benchmark—it is a philosophy embedded in every decision, every process, and every seed we produce. With deep expertise in premium green peas seeds, we are committed to delivering superior genetics, high germination standards, and consistent field performance that farmers can trust.
+              {t('footer.brand_desc')}
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
               {socialButtons.map(({ Icon, url }, index) => (
@@ -65,11 +67,11 @@ export default function Footer() {
           {/* QUICK LINKS */}
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 800, mb: 4, fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '0.1rem', fontFamily: 'var(--heading-font)' }}>
-              Explore
+              {t('footer.explore')}
             </Typography>
             {quickLinks.map((link) => (
               <Link
-                key={link.name}
+                key={link.key}
                 component={RouterLink}
                 to={link.path}
                 underline="none"
@@ -83,7 +85,7 @@ export default function Footer() {
                   fontWeight: 500
                 }}
               >
-                {link.name}
+                {t(`navbar.${link.key}`)}
               </Link>
             ))}
           </Grid>
@@ -91,7 +93,7 @@ export default function Footer() {
           {/* CONTACT INFO */}
           <Grid size={{ xs: 12, sm: 6, md: 4 }}>
             <Typography variant="h6" sx={{ fontWeight: 800, mb: 4, fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '0.1rem', fontFamily: 'var(--heading-font)' }}>
-              Contact Us
+              {t('footer.contact_us')}
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2.5 }}>
               <LocationOnIcon sx={{ color: 'primary.main', mr: 2, fontSize: '1.2rem' }} />
@@ -122,7 +124,7 @@ export default function Footer() {
 
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
           <Typography variant="body2" sx={{ color: 'grey.700', fontSize: '0.8rem' }}>
-            © {new Date().getFullYear()} BLSEEDS. All rights reserved.
+            {t('footer.rights_reserved').replace('{{year}}', String(new Date().getFullYear()))}
           </Typography>
           {/* <Box sx={{ display: 'flex', gap: 4 }}>
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (

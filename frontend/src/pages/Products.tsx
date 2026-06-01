@@ -6,26 +6,27 @@ import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import GrassIcon from '@mui/icons-material/Grass';
 import PageHero from '../components/common/PageHero';
 import ProductCard from '../components/common/ProductCard';
 import ProductDetailModal from '../components/common/ProductDetailModal';
-import { productCategories, cropDescriptions, CropDescription } from '../data/constants';
+import { useCropDescriptions } from '../hooks/useCropDescriptions';
+import { CropDescription } from '../data/constants';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Products() {
+  const { t } = useTranslation();
+  const cropDescriptions = useCropDescriptions();
   const [selectedProduct, setSelectedProduct] = useState<CropDescription | null>(null);
 
   return (
     <>
       <Box>
       <PageHero
-        title="Our Products"
-        breadcrumbs={['Home', 'Products']}
-        description={<>High quality seeds for every crop. <br />Trusted by thousands of farmers across India.</>}
+        title={t('products.page_hero_title')}
+        breadcrumbs={[t('navbar.home'), t('products.page_hero_title')]}
+        description={<>{t('products.page_hero_desc_1')} <br />{t('products.page_hero_desc_2')}</>}
         bgColor="#14532d"
         bgImage="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop"
         darkTheme={true}
@@ -42,9 +43,9 @@ export default function Products() {
               ml: 'auto'
             }}
           >
-            <Typography variant="caption" sx={{ fontWeight: 800 }}>PREMIUM QUALITY</Typography>
+            <Typography variant="caption" sx={{ fontWeight: 800 }}>{t('products.premium_quality')}</Typography>
             <Typography variant="h4" sx={{ fontWeight: 900, color: 'var(--accent-gold)' }}>100%</Typography>
-            <Typography variant="caption" sx={{ fontWeight: 800 }}>TRUSTED</Typography>
+            <Typography variant="caption" sx={{ fontWeight: 800 }}>{t('products.trusted')}</Typography>
           </Box>
         }
       />
@@ -71,12 +72,12 @@ export default function Products() {
         <Container maxWidth="xl">
           <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
             {[
-              { icon: <VerifiedUserIcon />, title: "High Germination", desc: "Best quality seeds for better yield" },
-              { icon: <HealthAndSafetyIcon />, title: "Disease Resistant", desc: "Strong and healthy crop guarantee" },
-              { icon: <ScienceIcon />, title: "Lab Tested", desc: "Scientifically tested for quality" },
-              { icon: <GrassIcon />, title: "Pure & Natural", desc: "100% pure seeds no compromise" },
-              { icon: <LocalShippingIcon />, title: "On-time Delivery", desc: "Fast & safe delivery at your doorstep" },
-              { icon: <ThumbUpIcon />, title: "Trusted by Farmers", desc: "Thousands of farmers trust our seeds" },
+              { icon: <VerifiedUserIcon />, title: t('products.f_title_1'), desc: t('products.f_desc_1') },
+              { icon: <HealthAndSafetyIcon />, title: t('products.f_title_2'), desc: t('products.f_desc_2') },
+              { icon: <ScienceIcon />, title: t('products.f_title_3'), desc: t('products.f_desc_3') },
+              { icon: <GrassIcon />, title: t('products.f_title_4'), desc: t('products.f_desc_4') },
+              { icon: <LocalShippingIcon />, title: t('products.f_title_5'), desc: t('products.f_desc_5') },
+              { icon: <ThumbUpIcon />, title: t('products.f_title_6'), desc: t('products.f_desc_6') },
             ].map((item, index) => (
               <Grid size={{ xs: 6, md: 2 }} key={index}>
                 <Stack spacing={1.5} sx={{ alignItems: 'center', textAlign: 'center' }}>
@@ -128,10 +129,10 @@ export default function Products() {
           >
             <Box>
               <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color:'white' }}>
-                Can't Find What You're Looking For?
+                {t('products.help_cta_title')}
               </Typography>
               <Typography variant="h6" sx={{ opacity: 0.8, fontWeight: 500, color: 'white' }}>
-                We have many more varieties. Contact our team for details.
+                {t('products.help_cta_desc')}
               </Typography>
             </Box>
             <Button
@@ -147,7 +148,7 @@ export default function Products() {
               component={Link}
               to="/contact"
             >
-              CONTACT OUR EXPERTS
+              {t('products.help_cta_btn')}
             </Button>
           </Box>
         </Container>

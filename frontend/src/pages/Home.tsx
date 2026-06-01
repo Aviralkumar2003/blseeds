@@ -4,6 +4,7 @@ import CallIcon from '@mui/icons-material/Call';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // Icons for Hero Product details
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -16,7 +17,8 @@ import InfoIcon from '@mui/icons-material/Info';
 // Custom components & constants
 import SectionHeader from '../components/common/SectionHeader';
 import ProductDetailModal from '../components/common/ProductDetailModal';
-import { homeFeatures, cropDescriptions } from '../data/constants';
+import { homeFeatures } from '../data/constants';
+import { useCropDescriptions } from '../hooks/useCropDescriptions';
 
 import founderPhoto from '../assets/Founding Members/Founder photo.jpg';
 import mdPhoto from '../assets/Founding Members/MD Photo.png';
@@ -26,9 +28,11 @@ import PeaImage2 from '../assets/Products/PeaImage2.png';
 import PeaImage3 from '../assets/Products/PeaImage3.png';
 
 export default function Home() {
+  const { t } = useTranslation();
   const [activeFounder, setActiveFounder] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const cropDescriptions = useCropDescriptions();
   const heroProduct = cropDescriptions["B.L-11 Pea Seeds"];
   return (
     <Box>
@@ -56,8 +60,7 @@ export default function Home() {
                     fontWeight: 900
                   }}
                 >
-                  High Quality <br />
-                  <span style={{ color: 'var(--primary-green)' }}>Seeds for Better Yield</span>
+                  {t('home.hero_title')}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -69,8 +72,7 @@ export default function Home() {
                     fontWeight: 600
                   }}
                 >
-                  We provide high germination, disease resistant and <br />
-                  best quality seeds for every kind of crop.
+                  {t('home.hero_subtitle')}
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
                   <Button
@@ -85,7 +87,7 @@ export default function Home() {
                     component={RouterLink}
                     to="/products"
                   >
-                    EXPLORE PRODUCTS
+                    {t('home.hero_cta1')}
                   </Button>
                   <Button
                     variant="outlined"
@@ -101,7 +103,7 @@ export default function Home() {
                     component={RouterLink}
                     to="/contact"
                   >
-                    CONTACT US
+                    {t('home.hero_cta2')}
                   </Button>
                 </Stack>
               </Box>
@@ -192,7 +194,7 @@ export default function Home() {
       {/* OUR HERO PRODUCT */}
       <Box sx={{ py: 8, bgcolor: '#fbfcfb' }}>
         <Container maxWidth="xl">
-          <SectionHeader title="Our Hero" highlight="Product" />
+          <SectionHeader title={t('home.hero_sec_1')} highlight={t('home.hero_sec_2')} />
 
           <Box
             sx={{
@@ -236,7 +238,7 @@ export default function Home() {
                   boxShadow: '0 4px 10px rgba(230, 179, 37, 0.15)',
                 }}
               >
-                ★ SIGNATURE VARIETY
+                {t('home.signature_variety')}
               </Box>
 
               <Typography
@@ -250,7 +252,7 @@ export default function Home() {
                   display: 'block'
                 }}
               >
-                OUR HERO PRODUCT
+                {t('home.hero_product_label')}
               </Typography>
 
               <Typography
@@ -263,8 +265,8 @@ export default function Home() {
                   fontWeight: 900
                 }}
               >
-                B.L.-11 Certified <br />
-                <span style={{ color: 'var(--primary-green)' }}>Pea Seed Variety</span>
+                {t('home.hero_product_name')} <br />
+                <span style={{ color: 'var(--primary-green)' }}>{t('home.hero_product_name_hl')}</span>
               </Typography>
 
               <Typography
@@ -277,10 +279,7 @@ export default function Home() {
                   fontWeight: 500
                 }}
               >
-                B.L.-11 is our premier, high-yielding mid-duration pea variety, trusted by thousands of farmers. 
-                Known for its exceptionally long (10–12 cm) dark green pods and sweet, tender green seeds, 
-                this certified variety combines vigorous plant growth with excellent disease tolerance to deliver 
-                reliable yields and premium market value.
+                {t('home.hero_product_desc')}
               </Typography>
 
               {/* Primary CTA Buttons */}
@@ -302,7 +301,7 @@ export default function Home() {
                     }
                   }}
                 >
-                  VIEW FULL SPECIFICATIONS
+                  {t('home.hero_btn_1')}
                 </Button>
                 <Button
                   component={RouterLink}
@@ -324,7 +323,7 @@ export default function Home() {
                     }
                   }}
                 >
-                  ENQUIRE NOW
+                  {t('home.hero_btn_2')}
                 </Button>
               </Stack>
             </Box>
@@ -403,19 +402,14 @@ export default function Home() {
           <Grid container spacing={8} sx={{ alignItems: 'center' }}>
             <Grid size={{ xs: 12, md: 6 }}>
               <Typography variant="overline" sx={{ color: 'var(--primary-green)', fontWeight: 800, letterSpacing: '0.1rem' }}>
-                ABOUT US
+                {t('home.about_label')}
               </Typography>
               <Typography variant="h2" sx={{ fontSize: '2.5rem', mt: 1, mb: 3, fontWeight: 900 }}>
-                Committed to Excellence in <br />
-                <span style={{ color: 'var(--primary-green)' }}>Agricultural Innovation</span>
+                {t('home.about_title_1')} <br />
+                <span style={{ color: 'var(--primary-green)' }}>{t('home.about_title_2')}</span>
               </Typography>
               <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, mb: 4, fontSize: '1.05rem' }}>
-                At B.L. Seeds Farm, our mission is to provide farmers with seeds that consistently
-
-                deliver strong performance in the field. We focus on developing and supplying high-
-                quality seeds that support better yields, healthy crop growth, and reliable results
-
-                across different farming conditions.
+                {t('home.about_desc')}
               </Typography>
               <Button
                 component={RouterLink}
@@ -423,7 +417,7 @@ export default function Home() {
                 variant="contained"
                 sx={{ bgcolor: '#1a472a', px: 4, py: 1.5, fontWeight: 800 }}
               >
-                READ MORE
+                {t('home.about_btn')}
               </Button>
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
@@ -461,11 +455,11 @@ export default function Home() {
           {/* Section Header */}
           <Box sx={{ textAlign: 'center', mb: 6 }}>
             <Typography variant="overline" sx={{ color: 'var(--primary-green)', fontWeight: 800, letterSpacing: '0.15rem', fontSize: '0.85rem' }}>
-              OUR LEADERSHIP
+              {t('home.founders_label')}
             </Typography>
             <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.8rem' }, fontWeight: 900, mt: 1 }}>
-              From the{' '}
-              <span style={{ color: 'var(--primary-green)' }}>Founders</span>
+              {t('home.founders_title_1')}{' '}
+              <span style={{ color: 'var(--primary-green)' }}>{t('home.founders_title_2')}</span>
             </Typography>
             <Box sx={{ width: 60, height: 4, bgcolor: 'var(--primary-green)', borderRadius: 2, mx: 'auto', mt: 2 }} />
           </Box>
@@ -537,24 +531,16 @@ export default function Home() {
                     “
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic', mb: 3, position: 'relative', zIndex: 1, maxHeight: '180px', overflowY: 'auto', pr: 2, '&::-webkit-scrollbar': { width: '4px' }, '&::-webkit-scrollbar-thumb': { bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '4px' } }}>
-                    "Dear Farmers & Valued Partners,<br />
-
-                    For the past 35 years, B.L. Seeds Farm has been dedicated to serving the farming community with commitment and integrity. Our journey has always been guided by one simple goal – to provide high-quality, reliable seeds that help farmers achieve better yields and success.<br />
-                    With decades of experience, hard work, and the trust of our farmers, we have grown steadily while staying true to our roots. We have embraced modern agricultural practices, yet we continue to uphold the traditional values that define us.<br />
-                    We strongly believe that a good seed is the foundation of a successful harvest. With this belief, we remain committed to supporting every farmer’s growth and prosperity.<br />
-                    Your trust and support are our greatest strengths, and we will continue to serve you with the same dedication in the years to come.<br />
-                    Thank you for being a part of our journey.
-                    "
+                  <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic', mb: 3, position: 'relative', zIndex: 1, maxHeight: '180px', overflowY: 'auto', pr: 2, whiteSpace: 'pre-line', '&::-webkit-scrollbar': { width: '4px' }, '&::-webkit-scrollbar-thumb': { bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '4px' } }}>
+                    {t('home.founder_1_quote')}
                   </Typography>
 
                   <Box>
                     <Typography variant="h5" sx={{ fontWeight: 900, color: 'var(--text-primary)', mb: 0.5 }}>
-                      Bharat Singh Pal
+                      {t('home.founder_1_name')}
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ color: 'var(--primary-green)', fontWeight: 700, letterSpacing: '0.05rem' }}>
-                      Founder & Proprietor<br />
-                      B.L. Seeds Farm
+                    <Typography variant="subtitle1" sx={{ color: 'var(--primary-green)', fontWeight: 700, letterSpacing: '0.05rem', whiteSpace: 'pre-line' }}>
+                      {t('home.founder_1_title')}
                     </Typography>
                   </Box>
                 </Box>
@@ -595,21 +581,16 @@ export default function Home() {
                     “
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic', mb: 3, position: 'relative', zIndex: 1, maxHeight: '180px', overflowY: 'auto', pr: 2, '&::-webkit-scrollbar': { width: '4px' }, '&::-webkit-scrollbar-thumb': { bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '4px' } }}>
-                    "Dear Farmers & Valued Partners,<br />
-                    At B.L. Seeds Farm, we are committed to delivering excellence through high-quality seeds that ensure better productivity and sustainable growth. As a Managing Director, my vision is to combine traditional farming values with modern agricultural innovation.<br />
-                    We specialize in premium green pea seeds, developed with care, research, and field experience to give you the best results. Our focus is not just on seeds, but on building long-term trust and success for every farmer associated with us.<br />
-                    We believe that strong seeds create strong harvests, and strong relationships create a successful future. Your trust inspires us to continuously improve and serve you better.<br />
-                    Thank you for being a part of our journey."
+                  <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic', mb: 3, position: 'relative', zIndex: 1, maxHeight: '180px', overflowY: 'auto', pr: 2, whiteSpace: 'pre-line', '&::-webkit-scrollbar': { width: '4px' }, '&::-webkit-scrollbar-thumb': { bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '4px' } }}>
+                    {t('home.founder_2_quote')}
                   </Typography>
 
                   <Box>
                     <Typography variant="h5" sx={{ fontWeight: 900, color: 'var(--text-primary)', mb: 0.5 }}>
-                      Om Baghel
+                      {t('home.founder_2_name')}
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ color: '#2e7d32', fontWeight: 700, letterSpacing: '0.05rem' }}>
-                      Managing Director<br />
-                      B.L. Seeds Farm
+                    <Typography variant="subtitle1" sx={{ color: '#2e7d32', fontWeight: 700, letterSpacing: '0.05rem', whiteSpace: 'pre-line' }}>
+                      {t('home.founder_2_title')}
                     </Typography>
                   </Box>
                 </Box>
@@ -683,10 +664,10 @@ export default function Home() {
               </Avatar>
               <Box>
                 <Typography variant="h4" sx={{ fontWeight: 900, mb: 0.5 }}>
-                  Become Our Dealer / Distributor
+                  {t('home.cta_banner_title')}
                 </Typography>
                 <Typography variant="body1" sx={{ color: 'var(--text-secondary)', fontWeight: 500 }}>
-                  Join us and grow your business with premium quality seeds.
+                  {t('home.cta_banner_subtitle')}
                 </Typography>
               </Box>
             </Stack>
@@ -703,7 +684,7 @@ export default function Home() {
                 fontSize: '1rem'
               }}
             >
-              ENQUIRE NOW
+              {t('home.cta_banner_button')}
             </Button>
           </Stack>
         </Container>
