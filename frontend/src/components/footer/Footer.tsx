@@ -12,6 +12,7 @@ import { CONTACT_DETAILS } from '../../data/constants';
 const quickLinks = [
   { name: 'Home', path: '/' },
   { name: 'Products', path: '/products' },
+  { name: 'Quality Assurance', path: '/quality-assurance' },
   { name: 'Contract Farming Program', path: '/dealer-enquiry' },
   { name: 'About Us', path: '/about' },
   { name: 'Contact', path: '/contact' }
