@@ -13,6 +13,7 @@ import DealerEnquiry from './pages/DealerEnquiry'
 import Gallery from './pages/Gallery'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
+import QualityAssurance from './pages/QualityAssurance'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="products" element={<Products />} />
+      <Route path="quality-assurance" element={<QualityAssurance />} />
       <Route path="dealer-enquiry" element={<DealerEnquiry />} />
       <Route path="gallery" element={<Gallery />} />
       <Route path="blog" element={<Blog />} />

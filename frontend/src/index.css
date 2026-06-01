@@ -80,6 +80,17 @@
     --body-font: "Nunito Sans", sans-serif;
   }
 
+  [data-page="quality-assurance"] {
+    --primary-green: #064e3b;
+    --secondary-green: #059669;
+    --accent-gold: #f59e0b;
+    --bg-color: #f0fdf4;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --heading-font: "Manrope", sans-serif;
+    --body-font: "Inter", sans-serif;
+  }
+
   body {
     background-color: var(--bg-color);
     color: var(--text-primary);
