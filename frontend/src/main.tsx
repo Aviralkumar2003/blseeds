@@ -5,6 +5,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import theme from './theme'
+import './i18n'
 import Layout from './components/layouts/Layout'
 import Home from './pages/Home'
 import About from './pages/About'

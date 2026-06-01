@@ -1,6 +1,7 @@
 import { Box, Card, CardContent, Typography, Button, Chip } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { CropDescription } from '../../data/constants';
+import { useTranslation } from 'react-i18next';
 
 interface ProductCardProps {
   product: CropDescription;
@@ -9,6 +10,8 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, variant = 'catalog', onClick }: ProductCardProps) {
+  const { t } = useTranslation();
+
   if (variant === 'home') {
     return (
       <Card

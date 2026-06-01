@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   AppBar, Box, Toolbar, IconButton, Container, Button,
   Drawer, List, ListItem, ListItemButton, Stack,
-  useScrollTrigger, Link, alpha
+  useScrollTrigger, Link, alpha, Select, MenuItem
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -11,19 +11,19 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LanguageIcon from '@mui/icons-material/Language';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Logo from '../../assets/Logo.svg';
 import { CONTACT_DETAILS } from '../../data/constants';
 
 const pages = [
-  { name: 'Home', path: '/' },
-  { name: 'Products', path: '/products' },
-  { name: 'Quality Assurance', path: '/quality-assurance' },
-  { name: 'Contract Farming Program', path: '/dealer-enquiry' },
-  { name: 'About Us', path: '/about' },
-  { name: 'Contact', path: '/contact' }
-  // { name: 'Gallery', path: '/gallery' },
-  // { name: 'Blog', path: '/blog' },
+  { key: 'home', path: '/' },
+  { key: 'products', path: '/products' },
+  { key: 'quality_assurance', path: '/quality-assurance' },
+  { key: 'contract_farming', path: '/dealer-enquiry' },
+  { key: 'about', path: '/about' },
+  { key: 'contact', path: '/contact' }
 ];
 
 const primaryGreen = '#0b5d1e';
@@ -31,6 +31,7 @@ const primaryGreen = '#0b5d1e';
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -126,7 +127,7 @@ export default function Navbar() {
                 const isActive = location.pathname === page.path;
                 return (
                   <Button
-                    key={page.name}
+                    key={page.key}
                     component={RouterLink}
                     to={page.path}
                     sx={{
@@ -146,7 +147,7 @@ export default function Navbar() {
                       }
                     }}
                   >
-                    {page.name}
+                    {t(`navbar.${page.key}`)}
                   </Button>
                 );
               })}
@@ -158,6 +159,27 @@ export default function Navbar() {
               spacing={{ xs: 1, lg: 2 }}
               sx={{ alignItems: 'center' }}
             >
+              <Select
+                value={i18n.language?.startsWith('hi') ? 'hi' : 'en'}
+                onChange={(e) => i18n.changeLanguage(e.target.value)}
+                variant="outlined"
+                size="small"
+                IconComponent={LanguageIcon}
+                sx={{
+                  color: '#1f2933',
+                  fontWeight: 600,
+                  fontSize: '0.9rem',
+                  boxShadow: 'none',
+                  borderRadius: '10px',
+                  '.MuiOutlinedInput-notchedOutline': { border: 0 },
+                  '&:hover': { bgcolor: alpha(primaryGreen, 0.06) },
+                  '& .MuiSelect-icon': { color: primaryGreen }
+                }}
+              >
+                <MenuItem value="en">EN</MenuItem>
+                <MenuItem value="hi">HI</MenuItem>
+              </Select>
+
               <Box sx={{ display: { lg: 'none' } }}>
                 <IconButton
                   aria-label="open drawer"
@@ -243,7 +265,7 @@ export default function Navbar() {
           {pages.map((page) => {
             const isActive = location.pathname === page.path;
             return (
-              <ListItem key={page.name} disablePadding sx={{ mb: 0.5 }}>
+              <ListItem key={page.key} disablePadding sx={{ mb: 0.5 }}>
                 <ListItemButton
                   component={RouterLink}
                   to={page.path}
@@ -266,7 +288,7 @@ export default function Navbar() {
                   }}
                 >
                   <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                    <Box>{page.name}</Box>
+                    <Box>{t(`navbar.${page.key}`)}</Box>
                     {isActive && <Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: primaryGreen }} />}
                   </Stack>
                 </ListItemButton>
