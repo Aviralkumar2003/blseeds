@@ -32,7 +32,7 @@ export default function Footer() {
           {/* BRAND SECTION */}
           <Grid size={{ xs: 12, md: 5 }}>
             <Typography variant="h5" sx={{ fontWeight: 900, mb: 3, color: 'primary.light', letterSpacing: '0.1rem', fontFamily: 'var(--heading-font)' }}>
-              BLSEEDS
+              B.L SEEDS FARM
             </Typography>
             <Typography variant="body2" sx={{ color: 'grey.500', mb: 4, lineHeight: 1.8, maxWidth: '90%' }}>
               At B.L. Seeds Farm, quality is not a benchmark—it is a philosophy embedded in every decision, every process, and every seed we produce. With deep expertise in premium green peas seeds, we are committed to delivering superior genetics, high germination standards, and consistent field performance that farmers can trust.
